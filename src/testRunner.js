@@ -1,4 +1,5 @@
-const tests = require("./ttt.spec.js");
+const generalTests = require("./ttt.general.spec.js");
+const checkWinnerTests = require("./ttt.check-winner.spec.js");
 
 function testAndLog(testName, conditionFunction) {
   const condition = conditionFunction();
@@ -9,7 +10,10 @@ function testAndLog(testName, conditionFunction) {
   }
 }
 
-tests.forEach((e) => {
+generalTests.forEach((e) => {
+  testAndLog(e.name, e.test);
+});
+checkWinnerTests.forEach((e) => {
   testAndLog(e.name, e.test);
 });
 

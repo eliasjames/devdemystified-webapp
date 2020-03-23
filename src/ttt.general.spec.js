@@ -61,12 +61,4 @@ module.exports = [
       return ttt.board[3] === capturedPlayer;
     },
   },
-  {
-    name: "can tell if game is won",
-    test: function checkWinner() {
-      const capturedPlayer = ttt.getCurrentPlayer();
-      ttt.loadBoard([capturedPlayer, capturedPlayer, capturedPlayer]);
-      return ttt.checkWinner() === capturedPlayer;
-    },
-  },
 ];
