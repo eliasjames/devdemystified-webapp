@@ -19,12 +19,24 @@ module.exports = [
     },
   },
   {
-    name: "game board can load",
+    name: "game board loads",
     test: function gameBoardCanLoad() {
       const testBoard = ["x"];
       ttt.loadBoard(testBoard);
 
       return ttt.board[0] === "x";
+    },
+  },
+  {
+    name: "only loads arrays",
+    test: function gameBoardCanLoad() {
+      const testBoard = "x";
+      try {
+        ttt.loadBoard(testBoard);
+        return ttt.board !== "x";
+      } catch(e) {
+        return e.message === "Board must be array";
+      }
     },
   },
 ];
