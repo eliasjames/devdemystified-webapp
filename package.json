@@ -4,6 +4,7 @@
   "description": "Full stack web app for training purposes",
   "main": "src/ttt.js",
   "scripts": {
+    "start": "npm run watch-tests",
     "test": "node ./src/ttt.spec.js",
     "watch-tests": "watch 'npm run test' src/"
   },
