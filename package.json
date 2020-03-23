@@ -1,0 +1,23 @@
+{
+  "name": "devdemystified-webapp",
+  "version": "0.0.1",
+  "description": "Full stack web app for training purposes",
+  "main": "src/ttt.js",
+  "scripts": {
+    "test": "node ./src/ttt.spec.js",
+    "watch-tests": "watch 'npm run test' src/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eliasjames/devdemystified-webapp.git"
+  },
+  "author": "Elias Carlston",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eliasjames/devdemystified-webapp/issues"
+  },
+  "homepage": "https://github.com/eliasjames/devdemystified-webapp#readme",
+  "dependencies": {
+    "watch": "^1.0.2"
+  }
+}
