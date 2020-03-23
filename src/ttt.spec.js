@@ -46,18 +46,27 @@ module.exports = [
     },
   },
   {
-    name: "can mark a spot on the board",
-    test: function markBoardSpot() {
-      ttt.markBoardSpot(3);
-      return ttt.board[3] === 'x';
-    },
-  },
-  {
     name: "changes player",
     test: function changePlayer() {
       const startingPlayer = ttt.getCurrentPlayer();
       ttt.changePlayer();
       return startingPlayer !== ttt.getCurrentPlayer();
+    },
+  },
+  {
+    name: "can mark a spot on the board",
+    test: function markBoardSpot() {
+      const capturedPlayer = ttt.getCurrentPlayer();
+      ttt.markBoardSpot(3);
+      return ttt.board[3] === capturedPlayer;
+    },
+  },
+  {
+    name: "can tell if game is won",
+    test: function checkWinner() {
+      const capturedPlayer = ttt.getCurrentPlayer();
+      ttt.loadBoard([capturedPlayer, capturedPlayer, capturedPlayer]);
+      return ttt.checkWinner() === capturedPlayer;
     },
   },
 ];
