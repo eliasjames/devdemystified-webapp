@@ -1,12 +1,19 @@
 const ttt = require("./ttt.js");
 
 function testAndLog(testName, conditionFunction) {
-  console.log(testName, conditionFunction());
+  const condition = conditionFunction();
+  if (condition) {
+    console.log(testName, condition);
+  } else {
+    console.log('\x1b[33m%s\x1b[0m', testName, condition);
+  }
 }
 
-testAndLog("test", ()=> { ttt.test === "test" });
+testAndLog("test", ()=> { return ttt.test === "test"; });
 
-testAndLog("it has a game board", ()=> { ttt.board === {} });
+testAndLog("it has a game board", ()=> {
+  return typeof ttt.board === "object"; 
+});
 
 function gameBoardCanBeLoaded() { 
   const boardLoadFunction = ttt.board.load; 
