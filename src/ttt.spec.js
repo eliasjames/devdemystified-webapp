@@ -20,7 +20,7 @@ module.exports = [
   },
   {
     name: "game board loads",
-    test: function gameBoardCanLoad() {
+    test: function gameBoardLoads() {
       const testBoard = ["x"];
       ttt.loadBoard(testBoard);
 
@@ -29,7 +29,7 @@ module.exports = [
   },
   {
     name: "only loads arrays",
-    test: function gameBoardCanLoad() {
+    test: function onlyLoadsArrays() {
       const testBoard = "x";
       try {
         ttt.loadBoard(testBoard);
@@ -37,6 +37,12 @@ module.exports = [
       } catch(e) {
         return e.message === "Board must be array";
       }
+    },
+  },
+  {
+    name: "has current player",
+    test: function hasCurrentPlayer() {
+      return ttt.getCurrentPlayer() === 'x';
     },
   },
 ];
