@@ -1,8 +1,8 @@
+let currentPlayer = "x";
 module.exports = {
   board: [],
-  _currentPlayer: "x",
   getCurrentPlayer: function getCurrentPlayer() {
-    return this._currentPlayer;
+    return currentPlayer;
   },
   loadBoard: function loadBoard(board) {
     if (board instanceof Array !== true) {
