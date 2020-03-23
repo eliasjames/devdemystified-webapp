@@ -13,6 +13,13 @@ module.exports = {
     let playerSpots = "";
     const possibleWins = [
       "012",
+      "345",
+      "678",
+      "036",
+      "147",
+      "258",
+      "048",
+      "246",
     ];
     let winnerStatus;
 
@@ -26,7 +33,6 @@ module.exports = {
         winnerStatus = capturedPlayer;
       }
     });
-    console.log("win", winnerStatus);
     return winnerStatus;
   },
   loadBoard: function loadBoard(board) {
