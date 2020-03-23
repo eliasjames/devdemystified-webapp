@@ -45,4 +45,19 @@ module.exports = [
       return ttt.getCurrentPlayer() === 'x';
     },
   },
+  {
+    name: "can mark a spot on the board",
+    test: function markBoardSpot() {
+      ttt.markBoardSpot(3);
+      return ttt.board[3] === 'x';
+    },
+  },
+  {
+    name: "changes player",
+    test: function changePlayer() {
+      const startingPlayer = ttt.getCurrentPlayer();
+      ttt.changePlayer();
+      return startingPlayer !== ttt.getCurrentPlayer();
+    },
+  },
 ];
