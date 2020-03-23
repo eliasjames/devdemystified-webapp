@@ -6,9 +6,9 @@ module.exports = [
     test: ()=> { return ttt.test === "test"; },
   },
   {
-    name: "it has a game board",
+    name: "game board is an array",
     test: ()=> {
-      return typeof ttt.board === "object";
+      return ttt.board instanceof Array;
     },
   },
   {
