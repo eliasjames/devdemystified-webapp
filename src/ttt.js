@@ -1,8 +1,8 @@
 module.exports = {
   board: {
-    load: function loadBoard() {
-      console.log("keedl");
-    }
+  },
+  loadBoard: function loadBoard(board) {
+    this.board = board;
   },
   test: "test"
 };

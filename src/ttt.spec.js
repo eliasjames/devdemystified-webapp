@@ -14,8 +14,17 @@ module.exports = [
   {
     name: "game board can be loaded",
     test: function gameBoardCanBeLoaded() {
-      const boardLoadFunction = ttt.board.load;
+      const boardLoadFunction = ttt.loadBoard;
       return (typeof boardLoadFunction) === "function";
+    },
+  },
+  {
+    name: "game board can load",
+    test: function gameBoardCanLoad() {
+      const testBoard = ["x"];
+      ttt.loadBoard(testBoard);
+
+      return ttt.board[0] === "x";
     },
   },
 ];
