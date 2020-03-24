@@ -44,6 +44,7 @@ const ttt = {
       throw new Error("Board must be array");
     }
     this.board = board;
+    currentPlayer = "x";
   },
   markBoardSpot: function markBoardSpot(boardPosition) {
     if (this.board[boardPosition]) {
