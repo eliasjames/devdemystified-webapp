@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function pageLoad() {
     for (let i=0; i<3; i++) {
       const eachCell = document.createElement("td");
       const cellID = i + rowNumber * 3;
-      eachCell.innerHTML = "-";
+      eachCell.innerHTML = ttt.board[cellID];
       eachCell.setAttribute("data-ttt-cell-id", cellID);
       eachCell.addEventListener("click", ()=>{
         eachCell.innerHTML = ttt.takeTurn(cellID);
@@ -24,4 +24,11 @@ document.addEventListener("DOMContentLoaded", function pageLoad() {
     }
   }
   fillTable();
+
+  const tttNewGame = document.getElementsByClassName("ttt-new-game")[0];
+  tttNewGame.addEventListener("click", ()=>{
+    ttt.loadBoard([]);
+    tttTable.innerHTML = "";
+    fillTable();
+  });
 });
