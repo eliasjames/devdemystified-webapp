@@ -61,4 +61,36 @@ module.exports = [
       return ttt.board[3] === capturedPlayer;
     },
   },
+  {
+    name: "can't mark a board position that's taken",
+    test: function markTakenBoardPosition() {
+      const testSpot = 3;
+      try {
+        ttt.loadBoard([]);
+        ttt.markBoardSpot(testSpot);
+        ttt.markBoardSpot(testSpot);
+        // test failed if the second markBoardSpot doesn't error
+        return false;
+      } catch(e) {
+        return e.message === "Board position " + testSpot + " is taken";
+      }
+    },
+  },
+  {
+    name: "can take a turn",
+    test: function takeTurn() {
+      const firstPlayer = ttt.getCurrentPlayer();
+      ttt.loadBoard([]);
+      ttt.takeTurn(3);
+      const secondPlayer = ttt.getCurrentPlayer();
+      ttt.takeTurn(4);
+      const currentPlayer = ttt.getCurrentPlayer();
+      return (
+        firstPlayer !== secondPlayer
+        && ttt.board[3] === firstPlayer
+        && ttt.board[4] === secondPlayer
+        && firstPlayer === currentPlayer
+      );
+    },
+  },
 ];

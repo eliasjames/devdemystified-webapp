@@ -42,7 +42,14 @@ module.exports = {
     this.board = board;
   },
   markBoardSpot: function markBoardSpot(boardPosition) {
+    if (this.board[boardPosition]) {
+      throw new Error("Board position " + boardPosition + " is taken");
+    }
     this.board[boardPosition] = this.getCurrentPlayer();
   },
-  test: "test"
+  takeTurn: function takeTurn(boardPosition) {
+    this.markBoardSpot(boardPosition);
+    this.changePlayer();
+  },
+  test: "test",
 };
