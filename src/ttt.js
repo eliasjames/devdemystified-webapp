@@ -1,4 +1,5 @@
 let currentPlayer = "x";
+let currentStatus;
 
 module.exports = {
   board: [],
@@ -7,6 +8,9 @@ module.exports = {
   },
   getCurrentPlayer: function getCurrentPlayer() {
     return currentPlayer;
+  },
+  getCurrentStatus: function getCurrentStatus() {
+    return currentStatus;
   },
   checkWinner: function checkWinner() {
     const capturedPlayer = this.getCurrentPlayer();
@@ -47,9 +51,18 @@ module.exports = {
     }
     this.board[boardPosition] = this.getCurrentPlayer();
   },
+  setCurrentStatus: function setCurrentStatus(status) {
+    currentStatus = status;
+    return currentStatus;
+  },
   takeTurn: function takeTurn(boardPosition) {
     this.markBoardSpot(boardPosition);
-    this.changePlayer();
+    const currentStatus = this.setCurrentStatus(
+      this.checkWinner()
+    );
+    if (!currentStatus) {
+      this.changePlayer();
+    }
   },
   test: "test",
 };
