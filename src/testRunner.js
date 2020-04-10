@@ -1,5 +1,5 @@
-const generalTests = require("./ttt.general.spec.js");
-const checkWinnerTests = require("./ttt.check-winner.spec.js");
+const generalTests = require("./ttt.general.node-test.js");
+const checkWinnerTests = require("./ttt.check-winner.node-test.js");
 
 function testAndLog(testName, conditionFunction) {
   const condition = conditionFunction();
