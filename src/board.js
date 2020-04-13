@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function pageLoad() {
 
   const tttNewGame = document.getElementsByClassName("ttt-new-game")[0];
   tttNewGame.addEventListener("click", ()=>{
-    ttt.loadBoard([]);
+    ttt.newGame();
     tttTable.innerHTML = "";
     fillTable();
   });

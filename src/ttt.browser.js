@@ -56,6 +56,11 @@ const ttt = {
     currentStatus = status;
     return currentStatus;
   },
+  newGame: function newGame() {
+    currentPlayer = "x";
+    currentStatus = undefined;
+    ttt.loadBoard([]);
+  },
   takeTurn: function takeTurn(boardPosition) {
     if (!currentStatus) {
       const capturedPlayer = this.getCurrentPlayer();

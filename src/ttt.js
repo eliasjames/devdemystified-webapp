@@ -52,6 +52,11 @@ module.exports = {
     }
     this.board[boardPosition] = this.getCurrentPlayer();
   },
+  newGame: newGame() {
+    currentPlayer = "x";
+    currentStatus = undefined;
+    ttt.loadBoard([]);
+  },
   setCurrentStatus: function setCurrentStatus(status) {
     currentStatus = status;
     return currentStatus;
