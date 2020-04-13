@@ -57,15 +57,14 @@ const ttt = {
     return currentStatus;
   },
   takeTurn: function takeTurn(boardPosition) {
-    const currentPlayer = this.getCurrentPlayer();
     this.markBoardSpot(boardPosition);
     const currentStatus = this.setCurrentStatus(
       this.checkWinner()
     );
     if (!currentStatus) {
       this.changePlayer();
-      return currentPlayer;
     }
+    return currentPlayer;
   },
   test: "test",
 };

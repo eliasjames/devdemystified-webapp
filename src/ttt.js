@@ -44,6 +44,7 @@ module.exports = {
       throw new Error("Board must be array");
     }
     this.board = board;
+    currentPlayer = "x";
   },
   markBoardSpot: function markBoardSpot(boardPosition) {
     if (this.board[boardPosition]) {
@@ -63,6 +64,7 @@ module.exports = {
     if (!currentStatus) {
       this.changePlayer();
     }
+    return currentPlayer;
   },
   test: "test",
 };
