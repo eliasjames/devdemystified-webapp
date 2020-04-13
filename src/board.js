@@ -11,7 +11,9 @@ document.addEventListener("DOMContentLoaded", function pageLoad() {
         : ttt.board[cellID];
       eachCell.setAttribute("data-ttt-cell-id", cellID);
       eachCell.addEventListener("click", ()=>{
-        eachCell.innerHTML = ttt.takeTurn(cellID);
+        if (!ttt.getCurrentStatus()) {
+          eachCell.innerHTML = ttt.takeTurn(cellID);
+        }
       });
       tableRow.appendChild(eachCell);
     }

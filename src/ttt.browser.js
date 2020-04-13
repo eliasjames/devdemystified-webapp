@@ -57,14 +57,18 @@ const ttt = {
     return currentStatus;
   },
   takeTurn: function takeTurn(boardPosition) {
-    this.markBoardSpot(boardPosition);
-    const currentStatus = this.setCurrentStatus(
-      this.checkWinner()
-    );
     if (!currentStatus) {
-      this.changePlayer();
+      const capturedPlayer = this.getCurrentPlayer();
+      this.markBoardSpot(boardPosition);
+      const currentStatus = this.setCurrentStatus(
+        this.checkWinner()
+      );
+      if (!currentStatus) {
+        this.changePlayer();
+        return capturedPlayer;
+      }
+      return capturedPlayer;
     }
-    return currentPlayer;
   },
   test: "test",
 };
