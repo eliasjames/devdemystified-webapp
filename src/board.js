@@ -6,7 +6,9 @@ document.addEventListener("DOMContentLoaded", function pageLoad() {
     for (let i=0; i<3; i++) {
       const eachCell = document.createElement("td");
       const cellID = i + rowNumber * 3;
-      eachCell.innerHTML = ttt.board[cellID];
+      eachCell.innerHTML = ttt.board[cellID] === undefined ?
+        "-"
+        : ttt.board[cellID];
       eachCell.setAttribute("data-ttt-cell-id", cellID);
       eachCell.addEventListener("click", ()=>{
         eachCell.innerHTML = ttt.takeTurn(cellID);
