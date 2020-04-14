@@ -27,12 +27,23 @@ document.addEventListener("DOMContentLoaded", function pageLoad() {
       );
     }
   }
-  fillTable();
 
-  const tttNewGame = document.getElementsByClassName("ttt-new-game")[0];
-  tttNewGame.addEventListener("click", ()=>{
+  function boardNewGame() {
     ttt.newGame();
     tttTable.innerHTML = "";
     fillTable();
+  }
+
+  const tttNewGame = document.getElementsByClassName("ttt-new-game")[0];
+  tttNewGame.addEventListener("click", ()=>{
+    boardNewGame();
   });
+
+  const tttPlayerIndicator = document.getElementsByClassName("ttt-player-indicator")[0];
+  ttt.eventEmitter.addEventListener("update-player-indicator", (e)=>{
+    tttPlayerIndicator.innerHTML = "Current player: " + ttt.getCurrentPlayer();
+  });
+
+  // start a new game automatically
+  boardNewGame();
 });

@@ -1,3 +1,5 @@
+const changePlayerEvent = new Event("update-player-indicator");
+const eventEmitter = new EventTarget();
 let currentPlayer = "x";
 let currentStatus;
 
@@ -5,7 +7,9 @@ const ttt = {
   board: [],
   changePlayer() {
     currentPlayer = (currentPlayer === "x") ? "o" : "x";
+    eventEmitter.dispatchEvent(changePlayerEvent);
   },
+  eventEmitter,
   getCurrentPlayer: function getCurrentPlayer() {
     return currentPlayer;
   },
@@ -58,6 +62,7 @@ const ttt = {
   },
   newGame: function newGame() {
     currentPlayer = "x";
+    eventEmitter.dispatchEvent(changePlayerEvent);
     currentStatus = undefined;
     ttt.loadBoard([]);
   },
