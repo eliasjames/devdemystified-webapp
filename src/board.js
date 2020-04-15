@@ -1,7 +1,18 @@
-document.addEventListener("DOMContentLoaded", function pageLoad() {
-  const tttTable = document.getElementsByClassName("ttt-board")[0];
+const tttBoard = {
+  init: function init() {
+    this.tttTable = document.getElementsByClassName("ttt-board")[0];
 
-  function createRow(rowNumber) {
+    this.tttNewGame = document.getElementsByClassName("ttt-new-game")[0];
+    this.tttNewGame.addEventListener("click", ()=>{
+      boardNewGame();
+    });
+
+    this.tttPlayerIndicator = document.getElementsByClassName("ttt-player-indicator")[0];
+    ttt.eventEmitter.addEventListener("update-player-indicator", (e)=>{
+      this.tttPlayerIndicator.innerHTML = "Current player: " + ttt.getCurrentPlayer();
+    });
+  },
+  createRow: function createRow(rowNumber) {
     const tableRow = document.createElement("tr");
     for (let i=0; i<3; i++) {
       const eachCell = document.createElement("td");
@@ -18,32 +29,22 @@ document.addEventListener("DOMContentLoaded", function pageLoad() {
       tableRow.appendChild(eachCell);
     }
     return tableRow;
-  }
-
-  function fillTable() {
+  },
+  fillTable: function fillTable() {
     for (let i=0; i<3; i++) {
-      tttTable.appendChild(
-        createRow(i)
+      this.tttTable.appendChild(
+        this.createRow(i)
       );
     }
-  }
-
-  function boardNewGame() {
+  },
+  boardNewGame: function boardNewGame() {
     ttt.newGame();
-    tttTable.innerHTML = "";
-    fillTable();
-  }
+    this.tttTable.innerHTML = "";
+    this.fillTable();
+  },
+}
 
-  const tttNewGame = document.getElementsByClassName("ttt-new-game")[0];
-  tttNewGame.addEventListener("click", ()=>{
-    boardNewGame();
-  });
-
-  const tttPlayerIndicator = document.getElementsByClassName("ttt-player-indicator")[0];
-  ttt.eventEmitter.addEventListener("update-player-indicator", (e)=>{
-    tttPlayerIndicator.innerHTML = "Current player: " + ttt.getCurrentPlayer();
-  });
-
-  // start a new game automatically
-  boardNewGame();
+document.addEventListener("DOMContentLoaded", () => {
+  tttBoard.init();
+  tttBoard.boardNewGame();
 });
