@@ -4,7 +4,7 @@ const tttBoard = {
 
     this.tttNewGame = document.getElementsByClassName("ttt-new-game")[0];
     this.tttNewGame.addEventListener("click", ()=>{
-      boardNewGame();
+      this.boardNewGame();
     });
 
     this.tttPlayerIndicator = document.getElementsByClassName("ttt-player-indicator")[0];
