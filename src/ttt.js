@@ -1,3 +1,6 @@
+const changePlayerEvent = "update-player-indicator";
+const EventEmitter = require("events");
+const eventEmitter = new EventEmitter();
 let currentPlayer = "x";
 let currentStatus;
 
@@ -5,7 +8,9 @@ module.exports = {
   board: [],
   changePlayer() {
     currentPlayer = (currentPlayer === "x") ? "o" : "x";
+    eventEmitter.emit(changePlayerEvent);
   },
+  eventEmitter,
   getCurrentPlayer: function getCurrentPlayer() {
     return currentPlayer;
   },
@@ -54,6 +59,7 @@ module.exports = {
   },
   newGame: function newGame() {
     currentPlayer = "x";
+    eventEmitter.emit(changePlayerEvent);
     currentStatus = undefined;
     ttt.loadBoard([]);
   },
@@ -62,14 +68,18 @@ module.exports = {
     return currentStatus;
   },
   takeTurn: function takeTurn(boardPosition) {
-    this.markBoardSpot(boardPosition);
-    const currentStatus = this.setCurrentStatus(
-      this.checkWinner()
-    );
     if (!currentStatus) {
-      this.changePlayer();
+      const capturedPlayer = this.getCurrentPlayer();
+      this.markBoardSpot(boardPosition);
+      const currentStatus = this.setCurrentStatus(
+        this.checkWinner()
+      );
+      if (!currentStatus) {
+        this.changePlayer();
+        return capturedPlayer;
+      }
+      return capturedPlayer;
     }
-    return currentPlayer;
   },
   test: "test",
 };
