@@ -52,7 +52,7 @@ module.exports = {
     }
     this.board[boardPosition] = this.getCurrentPlayer();
   },
-  newGame: newGame() {
+  newGame: function newGame() {
     currentPlayer = "x";
     currentStatus = undefined;
     ttt.loadBoard([]);
