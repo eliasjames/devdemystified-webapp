@@ -25,6 +25,20 @@ const requestListener = function (req, res) {
     }`;
     res.writeHead(200);
     res.end(status);
+  } else if (url.indexOf("/take-turn") > -1) {
+    const urlFragment = "/take-turn";
+    const positionIndex = url.indexOf(urlFragment);
+    let turnPosition = url.substr(
+      positionIndex + urlFragment.length,
+      url.length
+    );
+    if (!turnPosition) {
+      turnPosition = "Error, no turn position";
+      res.writeHead(400);
+    } else {
+      res.writeHead(200);
+    }
+    res.end(turnPosition);
   } else {
     res.writeHead(200);
     res.end('Hello, World!');
