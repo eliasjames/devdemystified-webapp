@@ -61,7 +61,7 @@ module.exports = {
     currentPlayer = "x";
     eventEmitter.emit(changePlayerEvent);
     currentStatus = undefined;
-    ttt.loadBoard([]);
+    this.loadBoard([]);
   },
   setCurrentStatus: function setCurrentStatus(status) {
     currentStatus = status;
