@@ -23,7 +23,10 @@ const tttBoard = {
       eachCell.setAttribute("data-ttt-cell-id", cellID);
       eachCell.addEventListener("click", ()=>{
         if (!ttt.getCurrentStatus()) {
-          eachCell.innerHTML = ttt.takeTurn(cellID);
+          fetch("http://localhost:8080/take-turn/" + cellID)
+            .then(resp => {
+              eachCell.innerHTML = ttt.takeTurn(cellID);
+            });
         }
       });
       tableRow.appendChild(eachCell);
@@ -38,9 +41,12 @@ const tttBoard = {
     }
   },
   boardNewGame: function boardNewGame() {
-    ttt.newGame();
-    this.tttTable.innerHTML = "";
-    this.fillTable();
+    fetch("http://localhost:8080/newgame")
+    .then(resp => {
+      ttt.newGame();
+      this.tttTable.innerHTML = "";
+      this.fillTable();
+    });
   },
 }
 
