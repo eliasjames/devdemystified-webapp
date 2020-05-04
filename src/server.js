@@ -26,16 +26,15 @@ const requestListener = function (req, res) {
     res.writeHead(200);
     res.end(status);
   } else if (url.indexOf("/take-turn") > -1) {
-    const urlFragment = "/take-turn";
+    const urlFragment = "/take-turn/";
     const positionIndex = url.indexOf(urlFragment);
-    let turnPosition = url.substr(
-      positionIndex + urlFragment.length,
-      url.length
-    );
+    const paramPosition = positionIndex + urlFragment.length;
+    let turnPosition = url.substr(paramPosition, url.length);
     if (!turnPosition) {
       turnPosition = "Error, no turn position";
       res.writeHead(400);
     } else {
+      ttt.takeTurn(turnPosition);
       res.writeHead(200);
     }
     res.end(turnPosition);
