@@ -64,7 +64,7 @@ const ttt = {
     currentPlayer = "x";
     eventEmitter.dispatchEvent(changePlayerEvent);
     currentStatus = undefined;
-    ttt.loadBoard([]);
+    this.loadBoard([]);
   },
   takeTurn: function takeTurn(boardPosition) {
     if (!currentStatus) {
