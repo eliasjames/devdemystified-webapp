@@ -3,6 +3,12 @@ const EventTarget = require("events");
 const eventEmitter = new EventTarget();
 let currentPlayer = "x";
 let currentStatus;
+function resetPlayers() {
+  return {
+    o: undefined,
+    x: undefined,
+  };
+}
 
 module.exports = {
   board: [],
@@ -57,11 +63,22 @@ module.exports = {
     }
     this.board[boardPosition] = this.getCurrentPlayer();
   },
+  players: resetPlayers(),
+  resetPlayers,
   setCurrentStatus: function setCurrentStatus(status) {
     currentStatus = status;
     return currentStatus;
   },
+  setPlayer: function setPlayer(playerName) {
+    console.log("YGDGD", this.players);
+    if (!this.players.x) {
+      this.players.x = playerName;
+      return;
+    }
+    if (!this.players.o) this.players.o = playerName;
+  },
   newGame: function newGame() {
+    this.players = this.resetPlayers();
     currentPlayer = "x";
     eventEmitter.emit(changePlayerEvent);
     currentStatus = undefined;

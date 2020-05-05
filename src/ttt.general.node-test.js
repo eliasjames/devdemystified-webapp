@@ -93,4 +93,27 @@ module.exports = [
       );
     },
   },
+  {
+    name: "can set a player",
+    test: function setPlayer() {
+      ttt.setPlayer("Elias");
+      return ttt.players.x === "Elias";
+    },
+  },
+  {
+    name: "can reset players",
+    test: function setPlayer() {
+      ttt.setPlayer("Elias");
+      ttt.newGame();
+      return ttt.players.x === undefined;
+    },
+  },
+  {
+    name: "can set a second player",
+    test: function setPlayer() {
+      ttt.setPlayer("Elias");
+      ttt.setPlayer("James");
+      return ttt.players.o === "James";
+    },
+  },
 ];
