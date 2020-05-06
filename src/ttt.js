@@ -1,8 +1,10 @@
 const changePlayerEvent = "update-player-indicator";
-const EventTarget = require("events");
-const eventEmitter = new EventTarget();
+const EventEmitter = require("events");
+const eventEmitter = new EventEmitter();
+
 let currentPlayer = "x";
 let currentStatus;
+
 function resetPlayers() {
   return {
     o: undefined,
@@ -62,6 +64,12 @@ module.exports = {
       throw new Error("Board position " + boardPosition + " is taken");
     }
     this.board[boardPosition] = this.getCurrentPlayer();
+  },
+  newGame: function newGame() {
+    currentPlayer = "x";
+    eventEmitter.emit(changePlayerEvent);
+    currentStatus = undefined;
+    this.loadBoard([]);
   },
   players: resetPlayers(),
   resetPlayers,

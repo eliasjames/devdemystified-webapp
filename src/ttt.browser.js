@@ -56,15 +56,15 @@ const ttt = {
     }
     this.board[boardPosition] = this.getCurrentPlayer();
   },
-  setCurrentStatus: function setCurrentStatus(status) {
-    currentStatus = status;
-    return currentStatus;
-  },
   newGame: function newGame() {
     currentPlayer = "x";
     eventEmitter.dispatchEvent(changePlayerEvent);
     currentStatus = undefined;
     this.loadBoard([]);
+  },
+  setCurrentStatus: function setCurrentStatus(status) {
+    currentStatus = status;
+    return currentStatus;
   },
   takeTurn: function takeTurn(boardPosition) {
     if (!currentStatus) {
