@@ -78,7 +78,6 @@ module.exports = {
     return currentStatus;
   },
   setPlayer: function setPlayer(playerName) {
-    console.log("YGDGD", this.players);
     if (!this.players.x) {
       this.players.x = playerName;
       return;
