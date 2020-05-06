@@ -39,6 +39,8 @@ const requestListener = function (req, res) {
     }`;
     res.writeHead(200);
     res.end(status);
+  } else if (url === "/test") {
+    readFileAndRespond("test.html", res);
   } else if (url.substr(0, 15) === "/assets/styles/") {
     const fileName = url.substr(15, url.length);
     readFileAndRespond("./assets/styles/" + fileName, res);
