@@ -1,15 +1,24 @@
-const changePlayerEvent = new Event("update-player-indicator");
-const eventEmitter = new EventTarget();
+const changePlayerEventName = "update-player-indicator";
+const changePlayerEvent = new Event(changePlayerEventName);
+const eventTarget = new EventTarget();
+
 let currentPlayer = "x";
 let currentStatus;
+
+function resetPlayers() {
+  return {
+    o: undefined,
+    x: undefined,
+  };
+}
 
 const ttt = {
   board: [],
   changePlayer() {
     currentPlayer = (currentPlayer === "x") ? "o" : "x";
-    eventEmitter.dispatchEvent(changePlayerEvent);
+    eventTarget.dispatchEvent(changePlayerEvent);
   },
-  eventEmitter,
+  eventTarget,
   getCurrentPlayer: function getCurrentPlayer() {
     return currentPlayer;
   },
@@ -57,14 +66,24 @@ const ttt = {
     this.board[boardPosition] = this.getCurrentPlayer();
   },
   newGame: function newGame() {
+    this.players = this.resetPlayers();
     currentPlayer = "x";
-    eventEmitter.dispatchEvent(changePlayerEvent);
+    eventTarget.dispatchEvent(changePlayerEvent);
     currentStatus = undefined;
     this.loadBoard([]);
   },
+  players: resetPlayers(),
+  resetPlayers,
   setCurrentStatus: function setCurrentStatus(status) {
     currentStatus = status;
     return currentStatus;
+  },
+  setPlayer: function setPlayer(playerName) {
+    if (!this.players.x) {
+      this.players.x = playerName;
+      return;
+    }
+    if (!this.players.o) this.players.o = playerName;
   },
   takeTurn: function takeTurn(boardPosition) {
     if (!currentStatus) {

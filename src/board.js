@@ -8,7 +8,7 @@ const tttBoard = {
     });
 
     this.tttPlayerIndicator = document.getElementsByClassName("ttt-player-indicator")[0];
-    ttt.eventEmitter.addEventListener("update-player-indicator", (e)=>{
+    ttt.eventTarget.addEventListener("update-player-indicator", (e)=>{
       this.tttPlayerIndicator.innerHTML = "Current player: " + ttt.getCurrentPlayer();
     });
   },

@@ -1,4 +1,4 @@
-const changePlayerEvent = "update-player-indicator";
+const changePlayerEventName = "update-player-indicator";
 const EventEmitter = require("events");
 const eventEmitter = new EventEmitter();
 
@@ -16,7 +16,7 @@ module.exports = {
   board: [],
   changePlayer() {
     currentPlayer = (currentPlayer === "x") ? "o" : "x";
-    eventEmitter.emit(changePlayerEvent);
+    eventEmitter.emit(changePlayerEventName);
   },
   eventEmitter,
   getCurrentPlayer: function getCurrentPlayer() {
@@ -66,8 +66,9 @@ module.exports = {
     this.board[boardPosition] = this.getCurrentPlayer();
   },
   newGame: function newGame() {
+    this.players = this.resetPlayers();
     currentPlayer = "x";
-    eventEmitter.emit(changePlayerEvent);
+    eventEmitter.emit(changePlayerEventName);
     currentStatus = undefined;
     this.loadBoard([]);
   },
@@ -83,13 +84,6 @@ module.exports = {
       return;
     }
     if (!this.players.o) this.players.o = playerName;
-  },
-  newGame: function newGame() {
-    this.players = this.resetPlayers();
-    currentPlayer = "x";
-    eventEmitter.emit(changePlayerEvent);
-    currentStatus = undefined;
-    this.loadBoard([]);
   },
   takeTurn: function takeTurn(boardPosition) {
     if (!currentStatus) {
