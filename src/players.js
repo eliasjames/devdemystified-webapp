@@ -3,4 +3,10 @@ document.addEventListener("DOMContentLoaded", ()=>{
   playerInput.addEventListener("change", (e) => {
     ttt.setPlayer(e.target.value);
   });
+  ttt.eventTarget.addEventListener(
+    ttt.setPlayerEventName,
+    (e) => {
+      playerInput.value = e.detail;
+    }
+  );
 });

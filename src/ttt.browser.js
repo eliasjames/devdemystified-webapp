@@ -1,6 +1,7 @@
 const changePlayerEventName = "update-player-indicator";
 const changePlayerEvent = new Event(changePlayerEventName);
 const eventTarget = new EventTarget();
+const setPlayerEventName = "set-player-name";
 
 let currentPlayer = "x";
 let currentStatus;
@@ -86,7 +87,14 @@ const ttt = {
       return;
     }
     if (!this.players.o) this.players.o = playerName;
+
+    const setPlayerEvent = new CustomEvent(
+      setPlayerEventName,
+      { detail: playerName },
+    );
+    this.eventTarget.dispatchEvent(setPlayerEvent);
   },
+  setPlayerEventName,
   takeTurn: function takeTurn(boardPosition) {
     if (!currentStatus) {
       const capturedPlayer = this.getCurrentPlayer();
