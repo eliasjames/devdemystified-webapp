@@ -116,4 +116,12 @@ module.exports = [
       return ttt.players.o === "James";
     },
   },
+  {
+    name: "can set a specific player",
+    test: function setPlayer() {
+      ttt.setPlayer("Elias");
+      ttt.setPlayer("James", "x");
+      return ttt.players.x === "James";
+    },
+  },
 ];

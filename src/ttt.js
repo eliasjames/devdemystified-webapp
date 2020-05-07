@@ -78,7 +78,9 @@ module.exports = {
     currentStatus = status;
     return currentStatus;
   },
-  setPlayer: function setPlayer(playerName) {
+  setPlayer: function setPlayer(playerName, playerLetter) {
+    if (playerLetter) this.players[playerLetter] = playerName;
+
     if (!this.players.x) {
       this.players.x = playerName;
       return;
