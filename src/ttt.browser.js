@@ -80,17 +80,15 @@ const ttt = {
     return currentStatus;
   },
   setPlayer: function setPlayer(playerName, playerLetter) {
-    if (playerLetter) this.players[playerLetter] = playerName;
-
-    if (!this.players.x) {
-      this.players.x = playerName;
-      return;
-    }
-    if (!this.players.o) this.players.o = playerName;
+    if (!playerLetter) throw new Error("must specify player letter");
+    this.players[playerLetter] = playerName;
 
     const setPlayerEvent = new CustomEvent(
       setPlayerEventName,
-      { detail: playerName },
+      { detail: {
+        playerName,
+        playerLetter,
+      }},
     );
     this.eventTarget.dispatchEvent(setPlayerEvent);
   },

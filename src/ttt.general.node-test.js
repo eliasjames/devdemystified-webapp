@@ -96,14 +96,14 @@ module.exports = [
   {
     name: "can set a player",
     test: function setPlayer() {
-      ttt.setPlayer("Elias");
+      ttt.setPlayer("Elias", "x");
       return ttt.players.x === "Elias";
     },
   },
   {
     name: "can reset players",
     test: function setPlayer() {
-      ttt.setPlayer("Elias");
+      ttt.setPlayer("Elias", "x");
       ttt.newGame();
       return ttt.players.x === undefined;
     },
@@ -111,17 +111,17 @@ module.exports = [
   {
     name: "can set a second player",
     test: function setPlayer() {
-      ttt.setPlayer("Elias");
-      ttt.setPlayer("James");
+      ttt.setPlayer("Elias", "x");
+      ttt.setPlayer("James", "o");
       return ttt.players.o === "James";
     },
   },
   {
-    name: "can set a specific player",
+    name: "setting a player doesn't affect the other",
     test: function setPlayer() {
-      ttt.setPlayer("Elias");
-      ttt.setPlayer("James", "x");
-      return ttt.players.x === "James";
+      ttt.setPlayer("Elias", "x");
+      ttt.setPlayer("James", "o");
+      return ttt.players.x === "Elias";
     },
   },
 ];
