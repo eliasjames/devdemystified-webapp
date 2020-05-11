@@ -1,6 +1,7 @@
 const changePlayerEventName = "update-player-indicator";
 const EventEmitter = require("events");
 const eventEmitter = new EventEmitter();
+const GAME_TYPE_ENUM = ["two-player", "autorandom"];
 
 let currentPlayer = "x";
 let currentStatus;
@@ -52,6 +53,7 @@ module.exports = {
     });
     return winnerStatus;
   },
+  gameType: undefined,
   loadBoard: function loadBoard(board) {
     if (board instanceof Array !== true) {
       throw new Error("Board must be array");
@@ -65,7 +67,11 @@ module.exports = {
     }
     this.board[boardPosition] = this.getCurrentPlayer();
   },
-  newGame: function newGame() {
+  newGame: function newGame(gameType) {
+    if (GAME_TYPE_ENUM.indexOf(gameType) < 0) {
+      throw new Error("Game type not in enum");
+    }
+    this.gameType = gameType;
     this.players = this.resetPlayers();
     currentPlayer = "x";
     eventEmitter.emit(changePlayerEventName);

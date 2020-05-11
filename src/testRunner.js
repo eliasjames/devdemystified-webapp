@@ -1,4 +1,5 @@
 const generalTests = require("./ttt.general.node-test.js");
+const autorandomTests = require("./ttt.autorandom.node-test.js");
 const checkWinnerTests = require("./ttt.check-winner.node-test.js");
 
 function testAndLog(testName, conditionFunction) {
@@ -11,6 +12,9 @@ function testAndLog(testName, conditionFunction) {
 }
 
 generalTests.forEach((e) => {
+  testAndLog(e.name, e.test);
+});
+autorandomTests.forEach((e) => {
   testAndLog(e.name, e.test);
 });
 checkWinnerTests.forEach((e) => {

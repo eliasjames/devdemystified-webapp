@@ -104,7 +104,7 @@ module.exports = [
     name: "can reset players",
     test: function setPlayer() {
       ttt.setPlayer("Elias", "x");
-      ttt.newGame();
+      ttt.newGame("autorandom");
       return ttt.players.x === undefined;
     },
   },
