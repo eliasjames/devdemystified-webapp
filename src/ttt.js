@@ -73,12 +73,19 @@ module.exports = {
     }
     this.gameType = gameType;
     this.players = this.resetPlayers();
+    if (gameType === "autorandom") {
+      const coinFlip = this.randomizer() === 1 ? "x" : "o";
+      this.players[coinFlip] = "Robot";
+    }
     currentPlayer = "x";
     eventEmitter.emit(changePlayerEventName);
     currentStatus = undefined;
     this.loadBoard([]);
   },
   players: resetPlayers(),
+  randomizer: function randomizer() {
+    return Math.floor(Math.random());
+  },
   resetPlayers,
   setCurrentStatus: function setCurrentStatus(status) {
     currentStatus = status;
