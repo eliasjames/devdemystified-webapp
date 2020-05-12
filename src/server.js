@@ -29,7 +29,7 @@ const requestListener = function (req, res) {
   if (url === "/") {
     readFileAndRespond("index.html", res);
   } else if (url === "/newgame") {
-    ttt.newGame();
+    ttt.newGame("two-player");
     res.writeHead(200);
     res.end('New game');
   } else if (url === "/status") {

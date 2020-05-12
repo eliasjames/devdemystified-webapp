@@ -43,7 +43,7 @@ const tttBoard = {
   boardNewGame: function boardNewGame() {
     fetch("http://localhost:8080/newgame")
     .then(resp => {
-      ttt.newGame();
+      ttt.newGame("two-player");
       this.tttTable.innerHTML = "";
       this.fillTable();
     });

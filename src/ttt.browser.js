@@ -1,12 +1,23 @@
 const changePlayerEventName = "update-player-indicator";
 const changePlayerEvent = new Event(changePlayerEventName);
 const eventTarget = new EventTarget();
+const GAME_TYPE_ENUM = ["two-player", "autorandom"];
 const setPlayerEventName = "set-player-name";
 
-let currentPlayer = "x";
+let currentPlayer;
 let currentStatus;
 
+function autorandomChangePlayerHandler() {
+  if (this.players[this.getCurrentPlayer()] === "Robot") {
+    let boardPosition = this.randomizer(9);
+    while (this.board[boardPosition]) {
+      boardPosition = this.randomizer(9);
+    }
+    this.takeTurn(boardPosition);
+  }
+}
 function resetPlayers() {
+  currentPlayer = undefined;
   return {
     o: undefined,
     x: undefined,
@@ -53,12 +64,12 @@ const ttt = {
     });
     return winnerStatus;
   },
+  gameType: undefined,
   loadBoard: function loadBoard(board) {
     if (board instanceof Array !== true) {
       throw new Error("Board must be array");
     }
     this.board = board;
-    currentPlayer = "x";
   },
   markBoardSpot: function markBoardSpot(boardPosition) {
     if (this.board[boardPosition]) {
@@ -66,14 +77,31 @@ const ttt = {
     }
     this.board[boardPosition] = this.getCurrentPlayer();
   },
-  newGame: function newGame() {
-    this.players = this.resetPlayers();
-    currentPlayer = "x";
-    eventTarget.dispatchEvent(changePlayerEvent);
-    currentStatus = undefined;
+  newGame: function newGame(gameType) {
+    if (GAME_TYPE_ENUM.indexOf(gameType) < 0) {
+      throw new Error("Game type not in enum");
+    }
+
     this.loadBoard([]);
+
+    this.gameType = gameType;
+    this.players = this.resetPlayers();
+    if (gameType === "autorandom") {
+      const coinFlip = this.randomizer(1) === 1 ? "x" : "o";
+      this.players[coinFlip] = "Robot";
+      this.eventEmitter.on(
+        changePlayerEventName,
+        autorandomChangePlayerHandler.bind(this)
+      );
+    }
+
+    this.changePlayer();
+    currentStatus = undefined;
   },
   players: resetPlayers(),
+  randomizer: function randomizer(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  },
   resetPlayers,
   setCurrentStatus: function setCurrentStatus(status) {
     currentStatus = status;

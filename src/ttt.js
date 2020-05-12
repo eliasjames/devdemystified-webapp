@@ -3,7 +3,7 @@ const EventEmitter = require("events");
 const eventEmitter = new EventEmitter();
 const GAME_TYPE_ENUM = ["two-player", "autorandom"];
 
-let currentPlayer = "x";
+let currentPlayer;
 let currentStatus;
 
 function autorandomChangePlayerHandler() {
@@ -16,6 +16,7 @@ function autorandomChangePlayerHandler() {
   }
 }
 function resetPlayers() {
+  currentPlayer = undefined;
   return {
     o: undefined,
     x: undefined,
@@ -68,7 +69,6 @@ module.exports = {
       throw new Error("Board must be array");
     }
     this.board = board;
-    currentPlayer = "x";
   },
   markBoardSpot: function markBoardSpot(boardPosition) {
     if (this.board[boardPosition]) {
