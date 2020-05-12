@@ -25,4 +25,15 @@ module.exports = [
       return (ttt.players.x === "Robot" || ttt.players.o === "Robot");
     },
   },
+  {
+    name: "autorandom takes turns",
+    test: ()=> {
+      ttt.newGame("autorandom");
+      if (ttt.players.x === "Robot") {
+        return ttt.board.filter(e => e === "x").length === 1;
+      } else if (ttt.players.o === "Robot") {
+        return ttt.board.filter(e => e === "o").length === 1;
+      }
+    },
+  },
 ];

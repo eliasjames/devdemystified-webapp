@@ -6,6 +6,15 @@ const GAME_TYPE_ENUM = ["two-player", "autorandom"];
 let currentPlayer = "x";
 let currentStatus;
 
+function autorandomChangePlayerHandler() {
+  if (this.players[this.getCurrentPlayer()] === "Robot") {
+    let boardPosition = this.randomizer(9);
+    while (this.board[boardPosition]) {
+      boardPosition = this.randomizer(9);
+    }
+    this.takeTurn(boardPosition);
+  }
+}
 function resetPlayers() {
   return {
     o: undefined,
@@ -71,20 +80,26 @@ module.exports = {
     if (GAME_TYPE_ENUM.indexOf(gameType) < 0) {
       throw new Error("Game type not in enum");
     }
+
+    this.loadBoard([]);
+
     this.gameType = gameType;
     this.players = this.resetPlayers();
     if (gameType === "autorandom") {
-      const coinFlip = this.randomizer() === 1 ? "x" : "o";
+      const coinFlip = this.randomizer(1) === 1 ? "x" : "o";
       this.players[coinFlip] = "Robot";
+      this.eventEmitter.on(
+        changePlayerEventName,
+        autorandomChangePlayerHandler.bind(this)
+      );
     }
-    currentPlayer = "x";
-    eventEmitter.emit(changePlayerEventName);
+
+    this.changePlayer();
     currentStatus = undefined;
-    this.loadBoard([]);
   },
   players: resetPlayers(),
-  randomizer: function randomizer() {
-    return Math.floor(Math.random());
+  randomizer: function randomizer(max) {
+    return Math.floor(Math.random() * Math.floor(max));
   },
   resetPlayers,
   setCurrentStatus: function setCurrentStatus(status) {
