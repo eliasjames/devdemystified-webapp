@@ -8,9 +8,9 @@ let currentStatus;
 
 function autorandomChangePlayerHandler() {
   if (this.players[this.getCurrentPlayer()] === "Robot") {
-    let boardPosition = this.randomizer(9);
+    let boardPosition = this.randomizer(0, 8);
     while (this.board[boardPosition]) {
-      boardPosition = this.randomizer(9);
+      boardPosition = this.randomizer(0, 8);
     }
     this.takeTurn(boardPosition);
   }
@@ -86,7 +86,7 @@ module.exports = {
     this.gameType = gameType;
     this.players = this.resetPlayers();
     if (gameType === "autorandom") {
-      const coinFlip = this.randomizer(1) === 1 ? "x" : "o";
+      const coinFlip = this.randomizer(0, 1) === 1 ? "x" : "o";
       this.players[coinFlip] = "Robot";
       this.eventEmitter.on(
         changePlayerEventName,
@@ -98,8 +98,8 @@ module.exports = {
     currentStatus = undefined;
   },
   players: resetPlayers(),
-  randomizer: function randomizer(max) {
-    return Math.floor(Math.random() * Math.floor(max));
+  randomizer: function randomizer(min, max) {
+    return Math.floor(Math.random() * (max + 1 - min));
   },
   resetPlayers,
   setCurrentStatus: function setCurrentStatus(status) {
