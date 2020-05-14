@@ -42,6 +42,7 @@ module.exports = [
   {
     name: "has current player",
     test: function hasCurrentPlayer() {
+      ttt.newGame("two-player");
       return ttt.getCurrentPlayer() === 'x';
     },
   },
