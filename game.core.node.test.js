@@ -2,13 +2,21 @@ const ttt = require("./game.core.node.js");
 
 const tests = [
   {
-    label: "ttt has a board", 
+    label: "has a board",
     condition: () => { return ttt.board !== undefined; },
   },
   {
-    label: "ttt board is an array", 
-    condition: () => { 
+    label: "board is an array",
+    condition: () => {
       return (ttt.board instanceof Array) === true;
+    }
+  },
+  {
+    label: "board can be loaded",
+    condition: () => {
+      const testBoard = [1, 2, 3];
+      ttt.loadBoard(testBoard);
+      return (ttt.board === testBoard) === true;
     }
   },
 ];
