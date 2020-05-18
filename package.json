@@ -1,0 +1,19 @@
+{
+  "name": "devdemystified-webapp",
+  "version": "1.0.0",
+  "description": "Full stack web app for training purposes",
+  "main": "game.core.node.js",
+  "scripts": {
+    "test": "node test.runner.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eliasjames/devdemystified-webapp.git"
+  },
+  "author": "Elias Carlston",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eliasjames/devdemystified-webapp/issues"
+  },
+  "homepage": "https://github.com/eliasjames/devdemystified-webapp#readme"
+}
