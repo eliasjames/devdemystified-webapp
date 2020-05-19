@@ -1,7 +1,8 @@
 const validPlayers = [1, 2];
 let currentPlayer;
 
-module.exports = {
+function gameCoreFactory() {
+  return {
   board: [],
   checkWinner: function checkWinner() {
     const directions = [
@@ -44,3 +45,5 @@ module.exports = {
   takeTurn: function takeTurn() {
   },
 };
+}
+module.exports = gameCoreFactory;
