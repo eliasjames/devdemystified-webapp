@@ -9,6 +9,7 @@ const tttTests = [
 
 tttTests.forEach(eachTestGroup => {
   eachTestGroup.forEach(e => {
+    eachTestGroup.beforeAll();
     const errorColor = "\x1b[31m%s\x1b[0m";
     const dimOutput = "\x1b[2m%s\x1b[0m";
     if (!e.condition()) {

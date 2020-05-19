@@ -20,4 +20,5 @@ const tests = [
   },
 ];
 
+tests.beforeAll = () => { return ttt; };
 module.exports = tests;
