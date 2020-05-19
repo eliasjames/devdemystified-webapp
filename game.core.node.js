@@ -1,4 +1,5 @@
 const validPlayers = [1, 2];
+let currentPlayer;
 
 module.exports = {
   board: [],
@@ -26,6 +27,12 @@ module.exports = {
     }
     return 0;
   },
+  getCurrentPlayer: function getCurrentPlayer() {
+    return currentPlayer || 0;
+  },
+  initCurrentPlayer: function initCurrentPlayer() {
+    currentPlayer = validPlayers[0];
+  },
   loadBoard: function loadBoard(board) {
     if (!(board instanceof Array)) throw new Error("board must be an array");
     board.forEach(e => {
@@ -33,5 +40,7 @@ module.exports = {
       throw new Error("board values must be player numbers");
     });
     this.board = board;
+  },
+  takeTurn: function takeTurn() {
   },
 };
