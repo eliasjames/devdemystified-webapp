@@ -15,7 +15,7 @@ const tests = [
   {
     label: "inits first player with x",
     condition: () => {
-      ttt.initCurrentPlayer();
+      ttt._initCurrentPlayer();
       return ttt.getCurrentPlayer() === 1;
     },
   },

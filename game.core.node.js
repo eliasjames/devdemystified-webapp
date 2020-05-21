@@ -33,7 +33,7 @@ function gameCoreFactory() {
     getCurrentPlayer: function getCurrentPlayer() {
       return currentPlayer || 0;
     },
-    initCurrentPlayer: function initCurrentPlayer() {
+    _initCurrentPlayer: function initCurrentPlayer() {
       currentPlayer = validPlayers[0];
     },
     loadBoard: function loadBoard(board) {
