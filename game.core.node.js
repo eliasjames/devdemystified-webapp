@@ -3,6 +3,13 @@ let currentPlayer;
 
 function gameCoreFactory() {
   currentPlayer = undefined;
+  function _changePlayer() {
+    if (currentPlayer === validPlayers[0]) {
+      currentPlayer = validPlayers[1];
+    } else {
+      currentPlayer = validPlayers[0];
+    }
+  }
 
   return {
     board: [],
@@ -45,6 +52,7 @@ function gameCoreFactory() {
       this.board = board;
     },
     takeTurn: function takeTurn() {
+      _changePlayer();
     },
   };
 }

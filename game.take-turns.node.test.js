@@ -19,6 +19,14 @@ const tests = [
       return ttt.getCurrentPlayer() === 1;
     },
   },
+  {
+    label: "changes player on turn",
+    condition: () => {
+      ttt._initCurrentPlayer();
+      ttt.takeTurn();
+      return ttt.getCurrentPlayer() === 2;
+    },
+  },
 ];
 
 tests.beforeAll = () => {
