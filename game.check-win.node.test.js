@@ -1,4 +1,5 @@
-const ttt = require("./game.core.node.js")();
+const tttFactory = require("./game.core.node.js");
+let ttt;
 
 const tests = [
   {
@@ -44,5 +45,7 @@ const tests = [
   },
 ];
 
-tests.beforeAll = () => { return ttt; };
+tests.beforeAll = () => {
+  ttt = tttFactory();
+};
 module.exports = tests;
