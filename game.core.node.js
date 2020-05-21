@@ -41,6 +41,7 @@ function gameCoreFactory() {
       return currentPlayer || 0;
     },
     _initCurrentPlayer: function initCurrentPlayer() {
+      if (currentPlayer) return;
       currentPlayer = validPlayers[0];
     },
     loadBoard: function loadBoard(board) {

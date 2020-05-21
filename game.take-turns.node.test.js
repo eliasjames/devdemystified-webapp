@@ -27,6 +27,15 @@ const tests = [
       return ttt.getCurrentPlayer() === 2;
     },
   },
+  {
+    label: "init player is idempotent",
+    condition: () => {
+      ttt._initCurrentPlayer();
+      ttt.takeTurn();
+      ttt._initCurrentPlayer();
+      return ttt.getCurrentPlayer() === 2;
+    },
+  },
 ];
 
 tests.beforeAll = () => {
