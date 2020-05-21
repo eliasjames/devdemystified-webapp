@@ -2,6 +2,8 @@ const validPlayers = [1, 2];
 let currentPlayer;
 
 function gameCoreFactory() {
+  currentPlayer = undefined;
+
   return {
     board: [],
     checkWinner: function checkWinner() {

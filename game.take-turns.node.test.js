@@ -1,4 +1,5 @@
-const ttt = require("./game.core.node.js")();
+const tttFactory = require("./game.core.node.js");
+let ttt;
 
 const tests = [
   {
@@ -7,18 +8,20 @@ const tests = [
   },
   {
     label: "has a current player",
-    condition: () => { 
-      return ttt.getCurrentPlayer() !== undefined; 
+    condition: () => {
+      return ttt.getCurrentPlayer() !== undefined;
     },
   },
   {
-    label: "inits current player with x",
-    condition: () => { 
+    label: "inits first player with x",
+    condition: () => {
       ttt.initCurrentPlayer();
-      return ttt.getCurrentPlayer() === 1; 
+      return ttt.getCurrentPlayer() === 1;
     },
   },
 ];
 
-tests.beforeAll = () => { return ttt; };
+tests.beforeAll = () => {
+  ttt = tttFactory();
+};
 module.exports = tests;
