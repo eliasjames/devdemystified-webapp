@@ -37,6 +37,9 @@ function gameCoreFactory() {
       }
       return 0;
     },
+    getGameStatus: function getGameStatus() {
+      return "something";
+    },
     getCurrentPlayer: function getCurrentPlayer() {
       return currentPlayer || 0;
     },

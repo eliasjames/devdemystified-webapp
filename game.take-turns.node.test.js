@@ -36,6 +36,12 @@ const tests = [
       return ttt.getCurrentPlayer() === 2;
     },
   },
+  {
+    label: "game has a status",
+    condition: () => {
+      return ttt.getGameStatus !== undefined;
+    },
+  },
 ];
 
 tests.beforeAll = () => {
