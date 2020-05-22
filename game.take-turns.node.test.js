@@ -4,7 +4,7 @@ let ttt;
 const tests = [
   {
     label: "can take turns",
-    condition: () => { return ttt.takeTurn() === undefined; },
+    condition: () => { return ttt.takeTurn(0) === undefined; },
   },
   {
     label: "has a current player",
@@ -23,7 +23,7 @@ const tests = [
     label: "changes player on turn",
     condition: () => {
       ttt._initCurrentPlayer();
-      ttt.takeTurn();
+      ttt.takeTurn(0);
       return ttt.getCurrentPlayer() === 2;
     },
   },
@@ -31,9 +31,26 @@ const tests = [
     label: "init player is idempotent",
     condition: () => {
       ttt._initCurrentPlayer();
-      ttt.takeTurn();
+      ttt.takeTurn(0);
       ttt._initCurrentPlayer();
       return ttt.getCurrentPlayer() === 2;
+    },
+  },
+  {
+    label: "take turn marks the board",
+    condition: () => {
+      ttt.takeTurn(0);
+      return ttt.board[0] === 1;
+    },
+  },
+  {
+    label: "take turn requires board position",
+    condition: () => {
+      try {
+        ttt.takeTurn();
+      } catch(e) {
+        return e.message === "take turn requires board position";
+      }
     },
   },
 ];
