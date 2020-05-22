@@ -4,13 +4,13 @@ let ttt;
 const tests = [
   {
     label: "can check winner",
-    condition: () => { return ttt.checkWinner() !== undefined; },
+    condition: () => { return ttt.setGameStatus() !== undefined; },
   },
   {
     label: "check no winner",
     condition: () => { 
       ttt.loadBoard([1, 1]);
-      return ttt.checkWinner() === 0; 
+      return ttt.setGameStatus() === 0; 
     },
   },
   {
@@ -18,7 +18,7 @@ const tests = [
     condition: () => { 
       const player = 1;
       ttt.loadBoard([player, player, player]);
-      return ttt.checkWinner() === player; 
+      return ttt.setGameStatus() === player; 
     },
   },
   {
@@ -29,7 +29,7 @@ const tests = [
 
       testBoard[1] = player, testBoard[4] = player, testBoard[7] = player; 
       ttt.loadBoard(testBoard);
-      return ttt.checkWinner() === player; 
+      return ttt.setGameStatus() === player; 
     },
   },
   {
@@ -40,7 +40,7 @@ const tests = [
 
       testBoard[2] = player, testBoard[4] = player, testBoard[6] = player; 
       ttt.loadBoard(testBoard);
-      return ttt.checkWinner() === player; 
+      return ttt.setGameStatus() === player; 
     },
   },
   {
@@ -54,7 +54,7 @@ const tests = [
     condition: () => {
       const player = 1;
       ttt.loadBoard([player, player, player]);
-      ttt.checkWinner();
+      ttt.setGameStatus();
       return ttt.getGameStatus() === "player one won";
     },
   },

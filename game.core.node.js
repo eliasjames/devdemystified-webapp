@@ -22,7 +22,7 @@ function gameCoreFactory() {
 
   return {
     board: [],
-    checkWinner: function checkWinner() {
+    setGameStatus: function setGameStatus() {
       const directions = [
         [0, 1, 2],
         [3, 4, 5],
@@ -47,7 +47,7 @@ function gameCoreFactory() {
       return 0;
     },
     getGameStatus: function getGameStatus() {
-      return validStatuses[this.checkWinner()];
+      return validStatuses[this.setGameStatus()];
     },
     getCurrentPlayer: function getCurrentPlayer() {
       return currentPlayer || 0;
