@@ -54,7 +54,6 @@ const tests = [
     condition: () => {
       const player = 1;
       ttt.loadBoard([player, player, player]);
-      ttt.setGameStatus();
       return ttt.getGameStatus() === "player one won";
     },
   },
