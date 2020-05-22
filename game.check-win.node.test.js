@@ -43,6 +43,27 @@ const tests = [
       return ttt.checkWinner() === player; 
     },
   },
+  {
+    label: "game has a status",
+    condition: () => {
+      return ttt.getGameStatus !== undefined;
+    },
+  },
+  {
+    label: "check winner sets game status",
+    condition: () => {
+      const player = 1;
+      ttt.loadBoard([player, player, player]);
+      ttt.checkWinner();
+      return ttt.getGameStatus() === "player one won";
+    },
+  },
+  {
+    label: "game status starts in progress",
+    condition: () => {
+      return ttt.getGameStatus() === "in progress";
+    },
+  },
 ];
 
 tests.beforeAll = () => {

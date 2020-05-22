@@ -1,8 +1,17 @@
 const validPlayers = [1, 2];
+const validStatuses = [
+  "in progress",
+  "player one won",
+  "player two won",
+  "tie",
+];
 let currentPlayer;
+let gameStatus;
 
 function gameCoreFactory() {
   currentPlayer = undefined;
+  gameStatus = undefined;
+
   function _changePlayer() {
     if (currentPlayer === validPlayers[0]) {
       currentPlayer = validPlayers[1];
@@ -38,7 +47,7 @@ function gameCoreFactory() {
       return 0;
     },
     getGameStatus: function getGameStatus() {
-      return "something";
+      return validStatuses[this.checkWinner()];
     },
     getCurrentPlayer: function getCurrentPlayer() {
       return currentPlayer || 0;
