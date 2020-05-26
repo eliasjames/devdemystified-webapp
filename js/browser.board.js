@@ -5,3 +5,15 @@ document.addEventListener("DOMContentLoaded", ()=>{
     });
   });
 });
+
+const board = {
+  buildCell () { return document.createElement("td"); },
+  buildRow () {
+    const myRow = document.createElement("tr");
+    for (var i=0; i<3; i++) {
+      myRow.appendChild(this.buildCell());
+    }
+    return myRow;
+  },
+  buildTable () { return document.createElement("table"); }
+};
