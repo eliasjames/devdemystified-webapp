@@ -1,17 +1,34 @@
-testRunner.testAndReport("smoke", ()=>{ return 1 === 1; });
-testRunner.testAndReport("built table is a DOM element", ()=>{
-  const myTable = board.buildTable();
-  return myTable instanceof HTMLElement;
-});
-testRunner.testAndReport("build a cell", ()=>{
-  const myCell = board.buildCell();
-  return myCell instanceof HTMLElement;
-});
-testRunner.testAndReport("build a row", ()=>{
-  const myRow = board.buildRow();
-  return myRow instanceof HTMLElement;
-});
-testRunner.testAndReport("row has three cells", ()=>{
-  const myRow = board.buildRow();
-  return myRow.children.length === 3;
-});
+testRunner.testAll([
+  {
+		"label": "smoke",
+		"condition": ()=>{ return 1 === 1; }
+	},
+  {
+		"label": "built table is a DOM element",
+		"condition": ()=>{
+      const myTable = board.buildTable();
+      return myTable instanceof HTMLElement;
+		}
+	},
+  {
+		"label": "build a cell",
+		"condition": ()=>{
+			const myCell = board.buildCell();
+			return myCell instanceof HTMLElement;
+		}
+	},
+  {
+		"label": "build a row",
+		"condition": ()=>{
+			const myRow = board.buildRow();
+			return myRow instanceof HTMLElement;
+		}
+	},
+  {
+		"label": "row has three cells",
+		"condition": ()=>{
+			const myRow = board.buildRow();
+			return myRow.children.length === 3;
+		}
+	},
+]);
