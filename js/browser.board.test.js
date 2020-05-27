@@ -31,4 +31,11 @@ testRunner.testAll([
 			return myRow.children.length === 3;
 		}
 	},
+  {
+		"label": "table has three rows",
+		"condition": ()=>{
+			const myTable = board.buildTable();
+			return myTable.children.length === 3;
+		}
+	},
 ]);

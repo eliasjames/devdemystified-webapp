@@ -15,5 +15,11 @@ const board = {
     }
     return myRow;
   },
-  buildTable () { return document.createElement("table"); }
+  buildTable () {
+    const myTable = document.createElement("table");
+    for (var i=0; i<3; i++) {
+      myTable.appendChild(this.buildRow());
+    }
+    return myTable;
+  },
 };
