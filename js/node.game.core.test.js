@@ -1,4 +1,4 @@
-const ttt = require("./game.core.node.js")();
+const ttt = require("./node.game.core.js")();
 
 const tests = [
   {

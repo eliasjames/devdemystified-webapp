@@ -1,6 +1,6 @@
-const coreTests = require("./game.core.node.test.js");
-const checkWinTests = require("./game.check-win.node.test.js");
-const takeTurnsTests = require("./game.take-turns.node.test.js");
+const coreTests = require("./node.game.core.test.js");
+const checkWinTests = require("./node.game.check-win.test.js");
+const takeTurnsTests = require("./node.game.take-turns.test.js");
 const tttTests = [
   coreTests,
   checkWinTests,

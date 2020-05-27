@@ -1,4 +1,4 @@
-const tttFactory = require("./game.core.node.js");
+const tttFactory = require("./node.game.core.js");
 let ttt;
 
 const tests = [
