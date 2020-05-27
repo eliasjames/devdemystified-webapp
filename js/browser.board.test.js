@@ -4,10 +4,10 @@ testRunner.testAll([
 		"condition": ()=>{ return 1 === 1; }
 	},
   {
-		"label": "built table is a DOM element",
+		"label": "built board is a DOM element",
 		"condition": ()=>{
-      const myTable = board.buildTable();
-      return myTable instanceof HTMLElement;
+      const myBoard = board.buildBoard();
+      return myBoard instanceof HTMLElement;
 		}
 	},
   {
@@ -32,10 +32,10 @@ testRunner.testAll([
 		}
 	},
   {
-		"label": "table has three rows",
+		"label": "board has three rows",
 		"condition": ()=>{
-			const myTable = board.buildTable();
-			return myTable.children.length === 3;
+			const myBoard = board.buildBoard();
+			return myBoard.children.length === 3;
 		}
 	},
 ]);

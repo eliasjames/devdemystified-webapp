@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", ()=>{
-  const myTable = board.buildTable();
-  document.querySelector("body").appendChild(myTable);
+  const myBoard = board.buildBoard();
+  document.querySelector("body").appendChild(myBoard);
 });
 
 const board = {
@@ -12,11 +12,11 @@ const board = {
     }
     return myRow;
   },
-  buildTable () {
-    const myTable = document.createElement("table");
+  buildBoard () {
+    const myBoard = document.createElement("table");
     for (var i=0; i<3; i++) {
-      myTable.appendChild(this.buildRow());
+      myBoard.appendChild(this.buildRow());
     }
-    return myTable;
+    return myBoard;
   },
 };
