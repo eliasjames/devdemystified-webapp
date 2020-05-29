@@ -4,7 +4,13 @@ document.addEventListener("DOMContentLoaded", ()=>{
 });
 
 const board = {
-  buildCell () { return document.createElement("td"); },
+  buildCell () {
+    const myCell = document.createElement("td");
+    myCell.addEventListener("click", (e)=>{
+      myCell.innerHTML = "something";
+    });
+    return myCell;
+  },
   buildRow () {
     const myRow = document.createElement("tr");
     for (var i=0; i<3; i++) {

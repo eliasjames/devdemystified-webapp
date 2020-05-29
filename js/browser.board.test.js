@@ -38,4 +38,15 @@ testRunner.testAll([
 			return myBoard.children.length === 3;
 		}
 	},
+  {
+    "label": "clicking cell marks cell",
+    "condition": ()=>{
+      const myBoard = board.buildBoard();
+      const myCell = myBoard.children[0].children[0];
+      let test;
+
+      myCell.click();
+      return myCell.innerHTML !== undefined;
+    }
+  },
 ]);
