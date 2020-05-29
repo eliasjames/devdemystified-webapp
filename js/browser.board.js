@@ -7,6 +7,9 @@ const board = {
   buildCell () {
     const myCell = document.createElement("td");
     myCell.addEventListener("click", (e)=>{
+      myCell.dispatchEvent(new Event("markCell"));
+    });
+    myCell.addEventListener("markCell", (e)=>{
       myCell.innerHTML = "something";
     });
     return myCell;
