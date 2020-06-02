@@ -49,4 +49,13 @@ testRunner.testAll([
       return myCell.innerHTML !== undefined;
     }
   },
+  {
+    "label": "cell has ID",
+    "condition": ()=>{
+      const myBoard = board.buildBoard();
+      const myCell = myBoard.children[1].children[1];
+      const dataCellId = myCell.getAttribute("data-cell-id");
+      return dataCellId === "4";
+    }
+  },
 ]);

@@ -4,8 +4,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
 });
 
 const board = {
-  buildCell () {
+  buildCell (cellID) {
     const myCell = document.createElement("td");
+    myCell.setAttribute("data-cell-id", cellID);
     myCell.addEventListener("click", (e)=>{
       myCell.dispatchEvent(new Event("markCell"));
     });
@@ -14,17 +15,21 @@ const board = {
     });
     return myCell;
   },
-  buildRow () {
+  buildRow (rowID) {
     const myRow = document.createElement("tr");
     for (var i=0; i<3; i++) {
-      myRow.appendChild(this.buildCell());
+      myRow.appendChild(
+        this.buildCell(
+          (rowID * 3) + i
+        )
+      );
     }
     return myRow;
   },
   buildBoard () {
     const myBoard = document.createElement("table");
     for (var i=0; i<3; i++) {
-      myBoard.appendChild(this.buildRow());
+      myBoard.appendChild(this.buildRow(i));
     }
     return myBoard;
   },
