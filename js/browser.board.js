@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
   document.querySelector("body").appendChild(myBoard);
 });
 
+let myBoard;
+
 const board = {
   buildCell (cellID) {
     const myCell = document.createElement("td");
@@ -27,10 +29,17 @@ const board = {
     return myRow;
   },
   buildBoard () {
-    const myBoard = document.createElement("table");
+    myBoard = document.createElement("table");
     for (var i=0; i<3; i++) {
       myBoard.appendChild(this.buildRow(i));
     }
+    myBoard.markCell = this.markCell;
     return myBoard;
+  },
+  markCell (cellNumber) {
+    const rowIndex = Math.floor(cellNumber / 3);
+    const cellIndex = cellNumber % 3;
+    const myCell = myBoard.children[rowIndex].children[cellIndex];
+    myCell.dispatchEvent(new Event("markCell"));
   },
 };

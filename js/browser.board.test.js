@@ -46,7 +46,16 @@ testRunner.testAll([
       let test;
 
       myCell.click();
-      return myCell.innerHTML !== undefined;
+      return myCell.innerHTML !== "";
+    }
+  },
+  {
+    "label": "event marks cell",
+    "condition": ()=>{
+      const myBoard = board.buildBoard();
+      const myCell = myBoard.children[1].children[1];
+      myCell.dispatchEvent(new Event("markCell"));
+      return myCell.innerHTML !== "";
     }
   },
   {
@@ -56,6 +65,25 @@ testRunner.testAll([
       const myCell = myBoard.children[1].children[1];
       const dataCellId = myCell.getAttribute("data-cell-id");
       return dataCellId === "4";
+    }
+  },
+  {
+    "label": "event marks one cell",
+    "condition": ()=>{
+      const myBoard = board.buildBoard();
+      const myCell = myBoard.children[1].children[1];
+      const anotherCell = myBoard.children[0].children[0];
+      myCell.dispatchEvent(new Event("markCell"));
+      return anotherCell.innerHTML === "";
+    }
+  },
+  {
+    "label": "convenience method for event",
+    "condition": ()=>{
+      const myBoard = board.buildBoard();
+      const myCell = myBoard.children[1].children[1];
+      myBoard.markCell(4);
+      return myCell.innerHTML !== "";
     }
   },
 ]);
