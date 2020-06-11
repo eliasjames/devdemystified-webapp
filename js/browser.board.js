@@ -1,8 +1,3 @@
-document.addEventListener("DOMContentLoaded", ()=>{
-  const myBoard = board.buildBoard();
-  document.querySelector("body").appendChild(myBoard);
-});
-
 let myBoard;
 
 const board = {
