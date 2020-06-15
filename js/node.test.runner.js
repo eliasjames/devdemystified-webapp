@@ -1,10 +1,12 @@
 const coreTests = require("./node.game.core.test.js");
 const checkWinTests = require("./node.game.check-win.test.js");
 const takeTurnsTests = require("./node.game.take-turns.test.js");
+const serverTests = require("./node.server.test.js");
 const tttTests = [
   coreTests,
   checkWinTests,
   takeTurnsTests,
+  serverTests,
 ];
 
 tttTests.forEach(eachTestGroup => {
