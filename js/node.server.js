@@ -5,9 +5,25 @@ function serverFactory() {
     res.writeHead(200);
     res.end('Hello, World!');
   };
+  function myRouter(url) {
+    let response;
+
+    if (url === "/") {
+      response = {
+        status: 200,
+        response: "Hello, World!",
+      };
+    } else if (url === "/newgame") {
+      response = {
+        status: 200,
+        response: "new game",
+      };
+    }
+    return response;
+  }
 
   const server = http.createServer(requestListener);
-  server.myHandler = requestListener;
+  server.myHandler = myRouter;
 
   return server;
 }

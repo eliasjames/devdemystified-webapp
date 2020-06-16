@@ -10,6 +10,24 @@ const tests = [
       return typeof server.myHandler === "function";
     },
   },
+  {
+    label: "root route",
+    condition: () => {
+      const server = serverFactory();
+      const home = server.myHandler("/");
+      return home.status === 200
+        && home.response === "Hello, World!";
+    },
+  },
+  {
+    label: "new game route",
+    condition: () => {
+      const server = serverFactory();
+      const home = server.myHandler("/newgame");
+      return home.status === 200
+        && home.response === "new game";
+    },
+  },
 ];
 tests.beforeAll = () => { };
 module.exports = tests;
