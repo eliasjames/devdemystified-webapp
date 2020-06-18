@@ -21,9 +21,9 @@ const tests = [
   {
     label: "new game route",
     condition: () => {
-      const home = server.myRouter("/newgame");
-      return home.status === 200
-        && home.response === "new game";
+      const newgame = server.myRouter("/newgame");
+      return newgame.status === 200
+        && newgame.response === "new game";
     },
   },
 ];
