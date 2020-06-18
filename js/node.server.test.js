@@ -7,14 +7,14 @@ const tests = [
     label: "smoke test for server handler",
     condition: () => {
       const server = serverFactory();
-      return typeof server.myHandler === "function";
+      return typeof server.myRouter === "function";
     },
   },
   {
     label: "root route",
     condition: () => {
       const server = serverFactory();
-      const home = server.myHandler("/");
+      const home = server.myRouter("/");
       return home.status === 200
         && home.response === "Hello, World!";
     },
@@ -23,7 +23,7 @@ const tests = [
     label: "new game route",
     condition: () => {
       const server = serverFactory();
-      const home = server.myHandler("/newgame");
+      const home = server.myRouter("/newgame");
       return home.status === 200
         && home.response === "new game";
     },

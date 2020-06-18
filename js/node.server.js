@@ -23,7 +23,7 @@ function serverFactory() {
   }
 
   const server = http.createServer(requestListener);
-  server.myHandler = myRouter;
+  server.myRouter = myRouter;
 
   return server;
 }
