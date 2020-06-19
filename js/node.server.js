@@ -1,4 +1,6 @@
 const http = require("http");
+const gameFactory = require("./node.game.core");
+let game;
 
 function serverFactory() {
   function requestListener (req, res) {
@@ -7,6 +9,7 @@ function serverFactory() {
   };
   function myRouter(url) {
     let response;
+    const takeTurnUrl = "/taketurn/";
 
     if (url === "/") {
       response = {
@@ -14,10 +17,29 @@ function serverFactory() {
         response: "Hello, World!",
       };
     } else if (url === "/newgame") {
+      game = gameFactory();
       response = {
         status: 200,
         response: "new game",
       };
+    } else if (url.indexOf(takeTurnUrl) > -1) {
+      if (!game) game = gameFactory();
+      const boardPosition = url.substring(
+        takeTurnUrl.length,
+        url.length
+      );
+      try {
+        game.takeTurn(boardPosition);
+        response = {
+          status: 200,
+          response: "turn taken",
+        };
+      } catch(e) {
+        response = {
+          status: 400,
+          response: e.message,
+        };
+      }
     }
     return response;
   }

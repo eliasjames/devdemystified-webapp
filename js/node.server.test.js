@@ -26,6 +26,22 @@ const tests = [
         && newgame.response === "new game";
     },
   },
+  {
+    label: "take turn route",
+    condition: () => {
+      const taketurn = server.myRouter("/taketurn/0");
+      return taketurn.status === 200
+        && taketurn.response === "turn taken";
+    },
+  },
+  {
+    label: "take turn route errors without board position",
+    condition: () => {
+      const taketurn = server.myRouter("/taketurn/");
+      return taketurn.status === 400
+        && taketurn.response === "take turn requires board position";
+    },
+  },
 ];
 tests.beforeAll = () => { 
   server = serverFactory();
