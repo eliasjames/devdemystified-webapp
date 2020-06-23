@@ -1,8 +1,9 @@
 const http = require("http");
 const gameFactory = require("./node.game.core");
-let game;
 
 function serverFactory() {
+  let game = undefined;
+
   function requestListener (req, res) {
     res.writeHead(200);
     res.end('Hello, World!');
@@ -10,6 +11,7 @@ function serverFactory() {
   function myRouter(url) {
     let response;
     const takeTurnUrl = "/taketurn/";
+    const gameStatusUrl = "/gamestatus/";
 
     if (url === "/") {
       response = {
@@ -22,6 +24,18 @@ function serverFactory() {
         status: 200,
         response: "new game",
       };
+    } else if (url.indexOf(gameStatusUrl) > -1) {
+      if (!game) {
+        response = {
+          status: 200,
+          response: "not started",
+        };
+      } else {
+        response = {
+          status: 200,
+          response: game.getGameStatus(),
+        };
+      }
     } else if (url.indexOf(takeTurnUrl) > -1) {
       if (!game) game = gameFactory();
       const boardPosition = url.substring(

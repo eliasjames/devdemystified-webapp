@@ -42,6 +42,23 @@ const tests = [
         && taketurn.response === "take turn requires board position";
     },
   },
+  {
+    label: "game status route",
+    condition: () => {
+      const gamestatus = server.myRouter("/gamestatus/");
+      return gamestatus.status === 200
+        && gamestatus.response === "not started";
+    },
+  },
+  {
+    label: "game status route in progress",
+    condition: () => {
+      server.myRouter("/taketurn/0");
+      const gamestatus = server.myRouter("/gamestatus/");
+      return gamestatus.status === 200
+        && gamestatus.response === "in progress";
+    },
+  },
 ];
 tests.beforeAll = () => { 
   server = serverFactory();
