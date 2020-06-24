@@ -5,8 +5,9 @@ function serverFactory() {
   let game = undefined;
 
   function requestListener (req, res) {
-    res.writeHead(200);
-    res.end('Hello, World!');
+    const myResponse = myRouter(req.url);
+    res.writeHead(myResponse.status);
+    res.end(myResponse.response);
   };
   function myRouter(url) {
     let response;
