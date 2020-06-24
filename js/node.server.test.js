@@ -14,8 +14,9 @@ const tests = [
     label: "root route",
     condition: () => {
       const home = server.myRouter("/");
+      const responseText = "<!doctype html>";
       return home.status === 200
-        && home.response === "Hello, World!";
+        && home.response.substr(0, responseText.length) === responseText;
     },
   },
   {
