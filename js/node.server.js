@@ -4,12 +4,14 @@ const gameFactory = require("./node.game.core");
 
 function serverFactory() {
   let game = undefined;
-  let homePage;
 
-  fs.readFile("index.html", (error, data) => {
-    if (error) console.log("error", error);
-    homePage = data;
-  });
+  function readFileSync(path) {
+    try {
+      return fs.readFileSync(path);
+    } catch(e) {
+      return e.message;
+    }
+  }
 
   function requestListener (req, res) {
     const myResponse = myRouter(req.url);
@@ -24,7 +26,7 @@ function serverFactory() {
     if (url === "/") {
       response = {
         status: 200,
-        response: homePage || "Home page not loaded",
+        response: readFileSync("index.html") || "Home page not loaded",
       };
     } else if (url === "/newgame") {
       game = gameFactory();
