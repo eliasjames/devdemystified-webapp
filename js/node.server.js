@@ -55,6 +55,11 @@ function serverFactory() {
           response: e.message,
         };
       }
+    } else {
+      response = {
+        status: 404,
+        response: "not found",
+      };
     }
     return response;
   }
