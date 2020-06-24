@@ -4,6 +4,7 @@
   "description": "Full stack web app for training purposes",
   "main": "game.core.node.js",
   "scripts": {
+    "start": "node js/node.server.script.js",
     "test": "node js/node.test.runner.js"
   },
   "repository": {
