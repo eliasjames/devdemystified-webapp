@@ -8,8 +8,9 @@ function serverFactory() {
     res.end(myResponse.response);
   };
 
+  const myRouter = routerFactory();
   const server = http.createServer(requestListener);
-  server.myRouter = routerFactory();
+  server.myRouter = myRouter;
 
   return server;
 }

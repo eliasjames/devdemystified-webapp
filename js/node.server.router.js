@@ -22,6 +22,16 @@ function routerFactory() {
         status: 200,
         response: readFileSync("index.html") || "Home page not loaded",
       };
+    } else if (url === "/assets/style.css") {
+      response = {
+        status: 200,
+        response: readFileSync("assets/style.css") || "Home page not loaded",
+      };
+    } else if (url === "/js/browser.board.js") {
+      response = {
+        status: 200,
+        response: readFileSync("js/browser.board.js") || "Home page not loaded",
+      };
     } else if (url === "/newgame") {
       game = gameFactory();
       response = {
