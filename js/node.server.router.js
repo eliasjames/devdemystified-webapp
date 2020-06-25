@@ -69,6 +69,11 @@ function routerFactory() {
           response: e.message,
         };
       }
+    } else if (url === "/test.html") {
+      response = {
+        status: 200,
+        response: readFileSync("test.html") || "Home page not loaded",
+      };
     } else {
       response = {
         status: 404,
