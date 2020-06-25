@@ -1,6 +1,10 @@
 const communication = {
   communicate (action, parameter) {
-    return this.doFetch(this.urlTable[action] + (parameter || ""))
+    const urlFragment = parameter !== undefined ?
+      this.urlTable[action] + "/" + parameter.toString() :
+      this.urlTable[action];
+
+    return this.doFetch(urlFragment)
       .then(resp => {
         if (resp.status === 200) {
           return resp.text();
@@ -18,7 +22,8 @@ const communication = {
     return fetch(urlFull);
   },
   urlTable: {
-    gameStatus: "gamestatus/",
+    gameStatus: "gamestatus",
     newGame: "newgame",
+    takeTurn: "taketurn",
   },
 };

@@ -15,7 +15,7 @@ function routerFactory() {
   return function myRouter(url) {
     let response;
     const takeTurnUrl = "/taketurn/";
-    const gameStatusUrl = "/gamestatus/";
+    const gameStatusUrl = "/gamestatus";
 
     if (url === "/") {
       response = {
@@ -57,6 +57,7 @@ function routerFactory() {
         takeTurnUrl.length,
         url.length
       );
+          console.log("response: ", url);
       try {
         game.takeTurn(boardPosition);
         response = {
