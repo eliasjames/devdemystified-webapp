@@ -27,10 +27,11 @@ function routerFactory() {
         status: 200,
         response: readFileSync("assets/style.css") || "Home page not loaded",
       };
-    } else if (url === "/js/browser.board.js") {
+    } else if (url.substr(0, 4) === "/js/") {
+      const trimUrl = url.substr(1, url.length);
       response = {
         status: 200,
-        response: readFileSync("js/browser.board.js") || "Home page not loaded",
+        response: readFileSync(trimUrl) || "Home page not loaded",
       };
     } else if (url === "/newgame") {
       game = gameFactory();
