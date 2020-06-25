@@ -11,13 +11,18 @@ function boardGameFactory(board, game) {
     .then(respText =>  {
       if (respText === "not started") {
         communication.communicate("newGame")
-          .catch(e => alert("error: " + e.message));
       }
-    }).catch(e => alert("error: " + e.message));
+    });
   board.game = game;
   board.takeTurn = function takeTurn (position) {
-    board.game.takeTurn(position);
-    board.markCell(position);
+    communication.communicate("takeTurn", position)
+      .then(respText =>  {
+        board.game.takeTurn(position);
+        board.markCell(position);
+      });
   };
+  board.addEventListener("clickCell", (e)=>{
+    board.takeTurn(e.detail);
+  });
   return board;
 }

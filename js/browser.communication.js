@@ -5,7 +5,11 @@ const communication = {
         if (resp.status === 200) {
           return resp.text();
         }
-        alert(action + resp.status);
+        const errMessage = resp.text();
+        throw new Error(`${action} ${resp.status} ${errMessage}`);
+      }).catch(e => {
+        alert("error: " + e.message);
+        throw new Error(e.message);
       });
   },
   doFetch (urlFragment) {

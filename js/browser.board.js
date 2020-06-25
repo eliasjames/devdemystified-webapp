@@ -3,9 +3,13 @@ let myBoard;
 const board = {
   buildCell (cellID) {
     const myCell = document.createElement("td");
+    const myCellID = cellID;
     myCell.setAttribute("data-cell-id", cellID);
     myCell.addEventListener("click", (e)=>{
-      myCell.dispatchEvent(new Event("markCell"));
+      myBoard.dispatchEvent(new CustomEvent(
+        "clickCell",
+        { detail: myCellID },
+      ));
     });
     myCell.addEventListener("markCell", (e)=>{
       myCell.innerHTML = "something";
