@@ -17,11 +17,12 @@ function boardGameFactory(board, game) {
   board.takeTurn = function takeTurn (position) {
     communication.communicate("takeTurn", position)
       .then(respText =>  {
+        const thisPlayer = board.game.getCurrentPlayer();
         board.game.takeTurn(position);
-        board.markCell(position);
+        board.markCell(position, thisPlayer);
         communication.communicate("awaitTurn")
           .then(respText =>  {
-            board.markCell(respText);
+            board.markCell(respText, board.game.getCurrentPlayer());
           });
       });
   };

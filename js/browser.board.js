@@ -12,7 +12,7 @@ const board = {
       ));
     });
     myCell.addEventListener("markCell", (e)=>{
-      myCell.innerHTML = "something";
+      myCell.innerHTML = e.detail;
     });
     return myCell;
   },
@@ -35,10 +35,13 @@ const board = {
     myBoard.markCell = this.markCell;
     return myBoard;
   },
-  markCell (cellNumber) {
+  markCell (cellNumber, playerID) {
     const rowIndex = Math.floor(cellNumber / 3);
     const cellIndex = cellNumber % 3;
     const myCell = myBoard.children[rowIndex].children[cellIndex];
-    myCell.dispatchEvent(new Event("markCell"));
+    myCell.dispatchEvent(new CustomEvent(
+      "markCell",
+      { detail: playerID },
+    ));
   },
 };
