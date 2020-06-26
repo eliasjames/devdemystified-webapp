@@ -28,10 +28,20 @@ function routerFactory() {
         response: readFileSync("assets/style.css") || "Home page not loaded",
       };
     } else if (url === "/awaitturn") {
-      response = {
-        status: 200,
-        response: "5",
-      };
+      const boardPosition = 5;
+      const thisPlayer = game.getCurrentPlayer();
+      try {
+        game.takeTurn(boardPosition, thisPlayer);
+        response = {
+          status: 200,
+          response: boardPosition.toString(),
+        };
+      } catch (e) {
+        response = {
+          status: 400,
+          response: e.message,
+        };
+      }
     } else if (url.substr(0, 4) === "/js/") {
       const trimUrl = url.substr(1, url.length);
       response = {
@@ -57,7 +67,6 @@ function routerFactory() {
         };
       }
     } else if (url.indexOf(takeTurnUrl) > -1) {
-      if (!game) game = gameFactory();
       const boardPosition = url.substring(
         takeTurnUrl.length,
         url.length
