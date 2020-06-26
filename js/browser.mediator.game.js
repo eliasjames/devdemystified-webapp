@@ -11,6 +11,9 @@ function boardGameFactory(board, game) {
     .then(respText =>  {
       if (respText === "not started") {
         communication.communicate("newGame")
+          .then(resp => {
+            game.newGame();
+          });
       }
     });
   board.game = game;
@@ -22,7 +25,9 @@ function boardGameFactory(board, game) {
         board.markCell(position, thisPlayer);
         communication.communicate("awaitTurn")
           .then(respText =>  {
-            board.markCell(respText, board.game.getCurrentPlayer());
+            const thisPlayer = board.game.getCurrentPlayer();
+            board.game.takeTurn(respText);
+            board.markCell(respText, thisPlayer);
           });
       });
   };
