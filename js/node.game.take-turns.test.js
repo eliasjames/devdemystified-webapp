@@ -39,6 +39,7 @@ const tests = [
   {
     label: "take turn marks the board",
     condition: () => {
+      ttt._initCurrentPlayer();
       ttt.takeTurn(0);
       return ttt.board[0] === 1;
     },

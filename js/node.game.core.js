@@ -64,11 +64,14 @@ function gameCoreFactory() {
       });
       this.board = board;
     },
+    newGame(board) {
+      this._initCurrentPlayer();
+      this.loadBoard(board);
+    },
     takeTurn: function takeTurn(position) {
       if (position === "" || position === undefined) {
         throw new Error("take turn requires board position");
       }
-      this._initCurrentPlayer();
       this.board[position] = currentPlayer;
       _changePlayer();
     },
