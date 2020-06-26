@@ -12,9 +12,8 @@ const board = {
       ));
     });
     myCell.addEventListener("markCell", (e)=>{
-      myCell.innerHTML = e.detail === 1 ?
-        "X" :
-        "O";
+      if (e.detail === 1) myCell.innerHTML = "X";
+      if (e.detail === 2) myCell.innerHTML = "O";
     });
     return myCell;
   },
