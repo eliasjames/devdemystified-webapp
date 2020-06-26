@@ -19,6 +19,10 @@ function boardGameFactory(board, game) {
       .then(respText =>  {
         board.game.takeTurn(position);
         board.markCell(position);
+        communication.communicate("awaitTurn")
+          .then(respText =>  {
+            board.markCell(respText);
+          });
       });
   };
   board.addEventListener("clickCell", (e)=>{

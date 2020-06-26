@@ -22,6 +22,7 @@ const communication = {
     return fetch(urlFull);
   },
   urlTable: {
+    awaitTurn: "awaitturn",
     gameStatus: "gamestatus",
     newGame: "newgame",
     takeTurn: "taketurn",

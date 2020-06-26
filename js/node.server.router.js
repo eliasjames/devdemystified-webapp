@@ -27,6 +27,11 @@ function routerFactory() {
         status: 200,
         response: readFileSync("assets/style.css") || "Home page not loaded",
       };
+    } else if (url === "/awaitturn") {
+      response = {
+        status: 200,
+        response: "5",
+      };
     } else if (url.substr(0, 4) === "/js/") {
       const trimUrl = url.substr(1, url.length);
       response = {
@@ -57,7 +62,6 @@ function routerFactory() {
         takeTurnUrl.length,
         url.length
       );
-          console.log("response: ", url);
       try {
         game.takeTurn(boardPosition);
         response = {
