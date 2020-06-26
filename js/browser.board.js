@@ -12,7 +12,9 @@ const board = {
       ));
     });
     myCell.addEventListener("markCell", (e)=>{
-      myCell.innerHTML = e.detail;
+      myCell.innerHTML = e.detail === 1 ?
+        "X" :
+        "O";
     });
     return myCell;
   },
