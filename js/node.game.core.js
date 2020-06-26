@@ -57,6 +57,7 @@ function gameCoreFactory() {
       currentPlayer = validPlayers[0];
     },
     loadBoard: function loadBoard(board) {
+      if (!board) return;
       if (!(board instanceof Array)) throw new Error("board must be an array");
       board.forEach(e => {
         if (validPlayers.indexOf(e) > -1) { return; }
