@@ -7,16 +7,16 @@ The `annotations` folder contains a description of every commit in this reposito
 
 ## Contents
 1. ### Prerequisites
-1. ### Getting Started
-1. ### Annotations
+2. ### Getting Started
+3. ### Annotations
 
 ---
 
 ## Prerequisites
 1. Browser
-1. Node.js
-1. Git
-1. Text editor
+2. Node.js
+3. Git
+4. Text editor
 
 #### Browser
 You'll need a web browser, updated to the latest version. Chrome is strongly preferred. Firefox and Safari are supported. Other browsers may work but are not guaranteed.
@@ -35,9 +35,9 @@ By following the steps, you'll build your files into a working web app. You'll r
 
 ###Download the repository
 1. Install the prerequisites (above).
-1. Create a new folder somewhere on your computer. 
-2. Click the green "Code" button on this page, and choose "Download ZIP". 
-3. In the new folder you created, unzip the download. 
+2. Create a new folder somewhere on your computer. 
+3. Click the green "Code" button on this page, and choose "Download ZIP". 
+4. In the new folder you created, unzip the download. 
 
 ###Reset to the beginning
 The entire project is now in your folder. However, Git defaults to the most recent Git commit, which is the end of the project. 

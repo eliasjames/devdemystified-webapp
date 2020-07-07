@@ -1,26 +1,14 @@
-```
-git show 890c7a994b37e19cf3aa85f42241f7c40277e496
+# Contents
+1. Overview
+2. Git commit
+3. Steps
 
-Author: Elias Carlston <elias@eliascarlston.com>
-Date:   Mon May 18 10:26:59 2020 -0400
-
-    Reset 20200518
-
-diff --git a/assets/styles/style.css b/assets/styles/style.css
-deleted file mode 100644
-index f9cf2ac..0000000
---- a/assets/styles/style.css
-+++ /dev/null
-@@ -1,3 +0,0 @@
--.ttt-board td {
--  padding: 1em;
--}
-diff --git a/index.html b/index.html
-deleted file mode 100644
-...
-```
 # Overview
 The first commit is always empty. Where do we start? We start with the most important thing. In software, the most important thing is that _it works_.
+
+1. Software development is about testing
+2. Automated testing
+3. Test in order to build
 
 ## Software development is about testing
 To guarantee software works requires testing. Discussions of testing in software development get terribly complicated, but the concept itself isn't.
@@ -49,5 +37,27 @@ A third, hidden benefit: your test code becomes documentation of source code. Ne
 ## Test in order to build
 Doing testing is like building with _raw_ spaghetti. Put a piece on top, the pieces below don't shift. Pull one piece out from the side, none of the other pieces come with it. Arrange pieces in a square, a dab of glue at the corners, walls and towers start to rise. 
 
+# Git commit 
+```
+git show 890c7a994b37e19cf3aa85f42241f7c40277e496
+
+Author: Elias Carlston <elias@eliascarlston.com>
+Date:   Mon May 18 10:26:59 2020 -0400
+
+    Reset 20200518
+
+diff --git a/assets/styles/style.css b/assets/styles/style.css
+deleted file mode 100644
+index f9cf2ac..0000000
+--- a/assets/styles/style.css
++++ /dev/null
+@@ -1,3 +0,0 @@
+-.ttt-board td {
+-  padding: 1em;
+-}
+diff --git a/index.html b/index.html
+deleted file mode 100644
+...
+```
 # Steps
 No actions on a blank commit. Since automated tests are so important, we'll start setting them up in the next one. 
