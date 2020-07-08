@@ -66,7 +66,7 @@ On the right hand side, `require` is a Node.js function that does three things:
 - and returns the result.
 The file to be read and returned is passed as an 'argument' to the function, inside the parentheses. Notice the file name is inside quotes, because we're passing it as text. The `./` at the beginning of the file name tells Node, "look in the current directory" (it's also common to see `../`, meaning "look in the parent directory"). 
 
-The single equals sign performs assignment. It takes the return value from the right hand expression, and puts a placeholder for that value into the variable on the left.
+The single equals sign operator performs assignment. It takes the return value from the right hand expression, and puts a placeholder for that value into the variable on the left.
 
 ### Line two explanation
 `console` is a Node.js object that organizes communication. `log` is a function that prints data where the user can see it. By passing in the `ttt` variable, log() will print out the variable's data. We also pass in "ttt" as text. This labels the output, and in case the variable has no data, something will still be printed.
