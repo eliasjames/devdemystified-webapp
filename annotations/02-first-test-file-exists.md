@@ -68,6 +68,8 @@ The file to be read and returned is passed as an 'argument' to the function, ins
 
 The single equals sign operator performs assignment. It takes the return value from the right hand expression, and puts a placeholder for that value into the variable on the left.
 
+Finally, every JavaScript statement ends with a semicolon.
+
 ### Line two explanation
 `console` is a Node.js object that organizes communication. `log` is a function that prints data where the user can see it. By passing in the `ttt` variable, log() will print out the variable's data. We also pass in "ttt" as text. This labels the output, and in case the variable has no data, something will still be printed.
 

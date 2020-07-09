@@ -67,3 +67,14 @@ We also have a new keyword, `undefined`. JavaScript returns `undefined` when a p
 
 ## Run the test without the solution
 When we run this test, it will not error the way the last one did. Referencing the non-existent object property `ttt.board` will return `undefined`. Then the negation comparison operator, `!==`, will return `false` (because `ttt.board === undefined` is `true`). Finally, `console.log` will print the returned ``false`` value, and that will be our failing test.
+
+Run `node game.core.node.js`, and verify that it outputs `false`.
+
+## Add the solution
+Open `game.core.node.js`, and expand line 1. Inside the curly brackets, which represent the object declaration, add the property name, `board`. Within an object declaration, a colon represents assignment of a value to a property (`:` instead of `=`). Following the colon comes the value. This value of square brackets, `[]`, represents an array declaration.  
+
+## Run the test with the solution
+Run `node game.core.node.js` again. `ttt.board` now contains an empty array instead of `undefined`. That makes the negation comparison `true`, because `[]` does not equal `undefined`. Verify that it now outputs `true`.
+
+## Verify the test without the solution
+We have to make sure our test switches on and off.  Change `game.core.node.js` back to `module.exports = {};`. Run the test and verify it prints false.
