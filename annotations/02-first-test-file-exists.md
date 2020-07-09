@@ -58,7 +58,7 @@ console.log("ttt", ttt);
 ### Line one explanation
 `const` is one of several javascript keywords that declares a new variable. All variables are placeholders in run-time memory where we can store data. We give this variable the name `ttt` (for "tic tac toe").
 
-Variables declared with the `const` keyword can only be assigned a value when they are created (hence `const`, from the scientific term 'constant'). It's good practice to use `const` everywhere unless you specifically know re-assignment will be needed; when reading a program, it's helpful to know which placeholders might change value and which will not. 
+Variables declared with the `const` keyword can only be assigned a value when they are created (hence `const`, from the scientific term 'constant'). The other variable declarations, `var` and `let`, allow any re-assignment. It's good practice to use `const` everywhere unless you specifically know re-assignment will be needed; when reading a program, it's helpful to know which placeholders might change value and which will not. 
 
 On the right hand side, `require` is a Node.js function that does three things:
 - reads a file from disk ("disk" meaning any long term memory),
