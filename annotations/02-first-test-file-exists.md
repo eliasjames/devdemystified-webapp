@@ -56,7 +56,9 @@ const ttt = require("./game.core.node.js");
 console.log("ttt", ttt);
 ```
 ### Line one explanation
-`const` is one of several javascript keywords that declares a new variable. All variables are placeholders in run-time memory where we can store data. We give this variable the name `ttt` (for "tic tac toe").
+`const` is one of several javascript keywords that declares a new variable. All variables are placeholders in run-time memory where we can store data.
+
+The only rule about variable names is the first character must be a letter or an underscore (`_`). The most important practice about variable names is they should be easy to understand, and all names throughout a project should follow a consistent pattern.  We name this variable `ttt` (short for "tic tac toe"). We'll use the 'ttt' prefix in many places. 
 
 Variables declared with the `const` keyword can only be assigned a value when they are created (hence `const`, from the scientific term 'constant'). The other variable declarations, `var` and `let`, allow any re-assignment. It's good practice to use `const` everywhere unless you specifically know re-assignment will be needed; when reading a program, it's helpful to know which placeholders might change value and which will not. 
 
