@@ -38,7 +38,7 @@ Date:   Mon May 18 11:34:04 2020 -0400
 @@ -1,3 +1,6 @@
  module.exports = {
    board: [],
-+  loadBoard: function loadBoard(board) {
++  loadBoard(board) {
 +    this.board = board;
 +  },
  };
@@ -73,7 +73,8 @@ Add the new test into `game.core.node.test.js`. Nothing new in this code.
 The test will error saying `loadBoard` is not a function. 
 
 ## Add the solution
-In `game.core.node.js`, add the `loadBoard` property to the object. 
+In `game.core.node.js`, add the `loadBoard` property to the object. We're again taking advantage of the "object property shorthand" - instead of `loadBoard: function loadBoard(...`, we can just declare a function name followed by parentheses with any parameters, and JavaScript will auto-add an object property with the same name.
+
 An object property can have any JavaScript value, but assigning a function has special meaning. Objects collect related data together, but functions _do stuff_, representing an object's behavior. An object's behaviors are called its "methods". The term method has a specific technical meaning, but it's frequently used interchangably with "function" when referring to object properties. 
 
 A method does get a special keyword, `this`. `this` refers to the object which the function is attached to, and provides a way to link data and behavior directly (if the object gets renamed, `this` still works).
