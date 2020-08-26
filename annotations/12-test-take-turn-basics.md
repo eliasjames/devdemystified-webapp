@@ -4,7 +4,7 @@
 3. Steps
 
 # Overview
-Start with basic setup. We're adding a `currentPlayer` variable to track whose turn it is (note the use of `let` as the value is expected to change). We have a "getter" and a "setter" function for `currentPlayer`. 
+Start with basic setup. We're adding a `currentPlayer` variable to track whose turn it is (note the use of `let`, as the value is expected to change). We have a "getter" and a "setter" function for `currentPlayer`. 
 
 The tests for these functions demonstrate documentation purposes: by reading the tests, we learn that a game which has not started has `currentPlayer` 0, and that the value `1` corresponds to player 'x'.
 
